@@ -1,2 +1,2 @@
-# PodcastManager
-An all-in-one Podcast Manager that allows the creator access to all the tools needed to develop and publish podcasts
+# Sequential Artist's Workshop Web Interface
+An all-in-one Web interface for the SAW that allows management of student's artwork as well as an administrator interface that allows management of the entire system
