@@ -9,6 +9,7 @@ exports.createImage = function(req, res)
 {
 	var img = new UploadedImage(req.body);
 
+	// FIXME: Filename looks like a UUID; will it always be unique?
 	if (req.files.file)
 		img.name = req.files.file.name;
 	else

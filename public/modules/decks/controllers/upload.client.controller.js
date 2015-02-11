@@ -8,12 +8,9 @@ angular.module('decks').controller('UploadController', ['$scope', 'UploadService
 
 		$scope.uploadImage = function(e)
 		{
-			console.log(e.target.files[0]);
-			$scope.targetImage = e.target.files[0];
-		};
+			console.log(e.files[0]);
+			$scope.targetImage = e.files[0];
 
-		$scope.createImage = function()
-		{
 			UploadService.saveImage($scope.targetImage);
 		};
 	}
