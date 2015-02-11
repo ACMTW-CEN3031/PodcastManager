@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 	UploadedImage = mongoose.model('Image'),
 	_ = require('lodash');
 
-exports.create = function(req, res)
+exports.createImage = function(req, res)
 {
 	var img = new UploadedImage(req.body);
 
