@@ -4,8 +4,10 @@
 		<h1 data-ng-bind="deck.name"></h1>
 	</div>
 
-	<div class="alert alert-warning text-center">
-		The deck's cards show up in this area.
+	<div data-ng-repeat="image in deck.images" class="col-sm-6 col-md-4">
+		<div class="thumbnail">
+			<img data-ng-src="uploads/{{image}}">
+		</div>
 	</div>
 
 </section>

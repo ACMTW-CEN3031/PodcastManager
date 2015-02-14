@@ -5,12 +5,12 @@ angular.module('decks').factory('UploadService', ['$http', '$rootScope',
 	{
 		var service = {};
 
-		service.saveImage = function(img)
+		service.saveImage = function(deck, img)
 		{
 			var fd = new FormData();
 			fd.append('file', img);
 
-			$http.post('images/', fd,
+			$http.post('/decks/' + deck._id + '/images', fd,
 			{
 				transformRequest: angular.identity,
 				headers: { 'Content-Type': undefined }

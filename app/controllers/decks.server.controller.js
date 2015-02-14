@@ -32,7 +32,7 @@ exports.show = function(req, res)
 exports.addImage = function(req, res)
 {
 	var deck = req.deck;
-	deck = _.extend(deck, req.body);
+	deck.images.push(req.files.file.name);
 
 	deck.save(function(err)
 	{
