@@ -18,4 +18,4 @@ module.exports = function(app)
 		.post(decks.addImage);
 
 	app.param('deckId', decks.deckById);
-}
+};

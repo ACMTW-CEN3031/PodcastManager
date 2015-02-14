@@ -27,7 +27,7 @@ exports.create = function(req, res)
 exports.show = function(req, res)
 {
 	res.json(req.deck);
-}
+};
 
 exports.addImage = function(req, res)
 {
