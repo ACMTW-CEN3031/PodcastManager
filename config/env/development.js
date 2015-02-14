@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: 'mongodb://localhost/saw-dev',
+	db: 'mongodb://admin:cen3031@ds039431.mongolab.com:39431/saw_interface',
 	app: {
 		title: 'SequentialArtistsWorkshopWebInterface - Development Environment'
 	},
