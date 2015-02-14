@@ -3,12 +3,18 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
-var ImageSchema = new Schema({
+var DeckSchema = new Schema({
 	name:
 	{
 		type: String,
-		default: ''
+		default: '',
+		required: 'Deck must have a name'
+	},
+	images:
+	{
+		type: [String],
+		default: []
 	}
 });
 
-mongoose.model('Image', ImageSchema);
+mongoose.model('Deck', DeckSchema);

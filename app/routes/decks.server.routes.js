@@ -8,6 +8,14 @@ module.exports = function(app)
 {
 	app.use(multer({ dest: './public/uploads/' }));
 
-	app.route('/images')
-		.post(decks.createImage);
+	app.route('/decks')
+		.post(decks.create);
+
+	app.route('/decks/:deckId')
+		.get(decks.show);
+
+	app.route('/decks/:deckId/images')
+		.post(decks.addImage);
+
+	app.param('deckId', decks.deckById);
 }

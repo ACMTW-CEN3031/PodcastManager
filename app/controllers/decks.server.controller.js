@@ -2,20 +2,14 @@
 
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	UploadedImage = mongoose.model('Image'),
+	Deck = mongoose.model('Deck'),
 	_ = require('lodash');
 
-exports.createImage = function(req, res)
+exports.create = function(req, res)
 {
-	var img = new UploadedImage(req.body);
+	var deck = new Deck(req.body);
 
-	// FIXME: Filename looks like a UUID; will it always be unique?
-	if (req.files.file)
-		img.name = req.files.file.name;
-	else
-		img.name = 'default.png';
-
-	img.save(function(err)
+	deck.save(function(err)
 	{
 		if (err)
 		{
@@ -25,7 +19,58 @@ exports.createImage = function(req, res)
 		}
 		else
 		{
-			res.jsonp(img);
+			res.json(deck);
 		}
+	});
+};
+
+exports.show = function(req, res)
+{
+	res.json(req.deck);
+}
+
+exports.addImage = function(req, res)
+{
+	var deck = req.deck;
+	deck = _.extend(deck, req.body);
+
+	deck.save(function(err)
+	{
+		if (err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			res.json(deck);
+		}
+	});
+};
+
+exports.deckById = function(req, res, next, id)
+{
+	if (!mongoose.Types.ObjectId.isValid(id))
+	{
+		return res.status(400).send({
+			message: 'Deck is invalid'
+		});
+	}
+
+	Deck.findById(id).exec(function(err, deck)
+	{
+		if (err)
+			return next(err);
+
+		if (!deck)
+		{
+			return res.status(404).send({
+				message: 'Deck not found'
+			});
+		}
+
+		req.deck = deck;
+		next();
 	});
 };
