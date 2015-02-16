@@ -8,7 +8,8 @@ var DeckSchema = new Schema({
 	{
 		type: String,
 		default: '',
-		required: 'Deck must have a name'
+		required: 'Deck must have a name',
+		unique: true
 	},
 	images:
 	{
