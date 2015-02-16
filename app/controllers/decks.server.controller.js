@@ -49,6 +49,23 @@ exports.addImage = function(req, res)
 	});
 };
 
+exports.list = function(req, res)
+{
+	Deck.find().sort('name').exec(function(err, decks)
+	{
+		if (err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			res.json(decks);
+		}
+	});
+};
+
 exports.deckById = function(req, res, next, id)
 {
 	if (!mongoose.Types.ObjectId.isValid(id))

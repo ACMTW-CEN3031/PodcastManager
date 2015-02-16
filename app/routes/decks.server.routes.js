@@ -9,6 +9,7 @@ module.exports = function(app)
 	app.use(multer({ dest: './public/uploads/' }));
 
 	app.route('/decks')
+		.get(decks.list)
 		.post(decks.create);
 
 	app.route('/decks/:deckId')

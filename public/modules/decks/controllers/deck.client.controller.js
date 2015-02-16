@@ -21,6 +21,11 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			});
 		};
 
+		$scope.find = function()
+		{
+			$scope.decks = DeckService.query();
+		};
+
 		$scope.findOne = function()
 		{
 			$scope.deck = DeckService.get({
