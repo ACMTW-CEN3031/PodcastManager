@@ -29,6 +29,11 @@
 					<a href="/#!/password/forgot">Forgot your password?</a> &nbsp; Or &nbsp;
 				    <a href="/#!/signup">Sign up</a>
 				</div>
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+				</fb:login-button>
+
+				<div id="status">
+				</div>
 			</fieldset>
 		</form>
 	</div>
