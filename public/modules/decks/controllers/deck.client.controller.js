@@ -21,11 +21,12 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			});
 		};
 
-		$scope.remove = function()
+		$scope.remove = function(deck)
 		{
-			$scope.deck.$remove(function()
+			deck.$remove(function()
 			{
-				//
+				var index = $scope.decks.indexOf(deck);
+				$scope.decks.splice(index, 1);
 			});
 		};
 
