@@ -86,7 +86,7 @@ exports.update = function(req, res)
 			res.json(deck);
 		}
 	});
-}
+};
 
 exports.list = function(req, res)
 {
