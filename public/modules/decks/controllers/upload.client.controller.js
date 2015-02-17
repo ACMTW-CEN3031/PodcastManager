@@ -12,6 +12,7 @@ angular.module('decks').controller('UploadController', ['$scope', '$location', '
 
 			UploadService.saveImage($scope.deck, $scope.targetImage);
 			$location.path('decks/' + $scope.deck._id + '/edit');
+			location.reload();
 		};
 	}
 ]);
