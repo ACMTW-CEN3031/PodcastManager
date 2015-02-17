@@ -13,7 +13,8 @@ module.exports = function(app)
 		.post(decks.create);
 
 	app.route('/decks/:deckId')
-		.get(decks.show);
+		.get(decks.show)
+		.put(decks.update);
 
 	app.route('/decks/:deckId/images')
 		.post(decks.addImage);

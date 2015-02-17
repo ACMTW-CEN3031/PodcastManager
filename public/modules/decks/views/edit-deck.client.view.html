@@ -16,6 +16,7 @@
 	<div data-ng-repeat="image in deck.images" class="col-sm-6 col-md-4">
 		<div class="thumbnail">
 			<img data-ng-src="uploads/{{image}}">
+			<p><a ng-click="removeImage(image)" class="btn btn-danger" role="button">Delete</a></p>
 		</div>
 	</div>
 

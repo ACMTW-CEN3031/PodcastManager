@@ -49,6 +49,26 @@ exports.addImage = function(req, res)
 	});
 };
 
+exports.update = function(req, res)
+{
+	var deck = req.deck;
+	deck = _.extend(deck, req.body);
+
+	deck.save(function(err)
+	{
+		if (err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			res.json(deck);
+		}
+	});
+}
+
 exports.list = function(req, res)
 {
 	Deck.find().sort('name').exec(function(err, decks)
