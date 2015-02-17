@@ -4,8 +4,24 @@
 		<h1>Generate a Spread</h1>
 	</div>
 
-	<div class="alert alert-warning text-center">
-		Choose the spread settings here.
+	<div class="row" ng-controller="DeckController" ng-init="find()">
+		<div class="col-md-2">
+			<h3 class="text-center">Decks</h3>
+			<div ng-repeat="deck in decks">
+				<div class="thumbnail">
+					<img ng-src="uploads/{{deck.images[0]}}">
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-md-8">
+			<h3 class="text-center">Spread</h3>
+		</div>
+		
+		<div class="col-md-2">
+			<h3 class="text-center">Options</h3>
+		</div>
 	</div>
+
 
 </section>
