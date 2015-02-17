@@ -24,6 +24,25 @@ exports.create = function(req, res)
 	});
 };
 
+exports.delete = function(req, res)
+{
+	var deck = req.deck;
+
+	deck.remove(function(err)
+	{
+		if (err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			res.json(deck);
+		}
+	});
+};
+
 exports.show = function(req, res)
 {
 	res.json(req.deck);

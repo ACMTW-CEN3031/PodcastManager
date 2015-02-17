@@ -21,12 +21,20 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			});
 		};
 
+		$scope.remove = function()
+		{
+			$scope.deck.$remove(function()
+			{
+				//
+			});
+		};
+
 		$scope.removeImage = function(img)
 		{
 			var deck = $scope.deck;
 
 			var index = deck.images.indexOf(img);
-			deck.images.splice(index);
+			deck.images.splice(index, 1);
 
 			deck.$update(function(res)
 			{
@@ -36,7 +44,7 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			{
 				$scope.error = err.data.message;
 			});
-		}
+		};
 
 		$scope.find = function()
 		{

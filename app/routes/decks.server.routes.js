@@ -14,7 +14,8 @@ module.exports = function(app)
 
 	app.route('/decks/:deckId')
 		.get(decks.show)
-		.put(decks.update);
+		.put(decks.update)
+		.delete(decks.delete);
 
 	app.route('/decks/:deckId/images')
 		.post(decks.addImage);
