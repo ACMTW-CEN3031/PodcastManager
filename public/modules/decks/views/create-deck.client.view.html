@@ -1,11 +1,17 @@
-<section>
+<section data-ng-controller="DeckController">
 
 	<div class="page-header">
 		<h1>Create a Deck</h1>
 	</div>
 
-	<div class="alert alert-warning text-center">
-		Upload, Option, etc. dialogues go here.
-	</div>
+	<form name="deckForm" data-ng-submit="create()">
+		<label class="control-label" for="name">Deck name:</label>
+		<input name="name" type="text" data-ng-model="name" id="name" required>
+		<input type="submit">
+
+		<div data-ng-show="error" class="text-danger">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
 
 </section>
