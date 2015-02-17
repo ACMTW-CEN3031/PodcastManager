@@ -5,7 +5,18 @@
 	</div>
 
 	<div data-ng-repeat="deck in decks">
-		<a data-ng-href="#!/decks/{{deck._id}}" data-ng-bind="deck.name"></a>
+
+		<div class="col-sm-6 col-md-4">
+			<div class="thumbnail">
+				<div class="thumbnail">
+				<img data-ng-src="uploads/{{deck.images[0]}}">
+				</div>
+			<div class="caption">
+			<h3><a data-ng-href="#!/decks/{{deck._id}}" data-ng-bind="deck.name"></a></h3>
+			<p>Deck description</p>
+			<p><a href="#" class="btn btn-primary" role="button" data-ng-href="#!/decks/{{deck._id}}">Browse</a> <a href="#" class="btn btn-primary" role="button" data-ng-href="#!/decks/{{deck._id}}/edit">Edit</a> <a href="#" class="btn btn-primary" role="button">Delete</a> </p>
+			</div>
+		
 	</div>
 
 </section>
