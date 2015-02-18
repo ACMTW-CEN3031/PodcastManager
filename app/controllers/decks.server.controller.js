@@ -48,26 +48,6 @@ exports.show = function(req, res)
 	res.json(req.deck);
 };
 
-exports.addImage = function(req, res)
-{
-	var deck = req.deck;
-	deck.images.push(req.files.file.name);
-
-	deck.save(function(err)
-	{
-		if (err)
-		{
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		}
-		else
-		{
-			res.json(deck);
-		}
-	});
-};
-
 exports.update = function(req, res)
 {
 	var deck = req.deck;
@@ -86,7 +66,7 @@ exports.update = function(req, res)
 			res.json(deck);
 		}
 	});
-}
+};
 
 exports.list = function(req, res)
 {

@@ -4,18 +4,24 @@
 		<h1>Edit {{deck.name}}</h1>
 	</div>
 
-	<div data-ng-controller="UploadController" class="form-group">
+	<div class="form-group">
 		<label class="control-label" for="name">Upload an image:</label>
-		<!-- FIXME: Use ng-file-upload or something here. -->
+
+		<div class="button" ng-file-select data-ng-file-change="uploadImage($files[0])">Upload</div>
+		<div class="progress" data-ng-show="uploading">
+			<div class="progress-bar" role="progressbar" style="width: {{uploadProgress}}%"></div>
+		</div>
+
+		<!-- FIXME: Use ng-file-upload or something here.
 		<div class="controls">
 			<input type="file" data-ng-model="targetImage" id="targetImage" onchange="angular.element(this).scope().uploadImage(this)" required>
 			{{selectedFile.name}}
-		</div>
+		</div> -->
 	</div>
 	
 	<div data-ng-repeat="image in deck.images" class="col-sm-6 col-md-4">
 		<div class="thumbnail">
-			<img data-ng-src="uploads/{{image}}">
+			<img data-ng-src="http://i.imgur.com/{{image}}">
 			<p><a data-ng-click="removeImage(image)" class="btn btn-danger" role="button">Delete</a></p>
 		</div>
 	</div>

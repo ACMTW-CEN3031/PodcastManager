@@ -17,8 +17,5 @@ module.exports = function(app)
 		.put(decks.update)
 		.delete(decks.delete);
 
-	app.route('/decks/:deckId/images')
-		.post(decks.addImage);
-
 	app.param('deckId', decks.deckById);
 };
