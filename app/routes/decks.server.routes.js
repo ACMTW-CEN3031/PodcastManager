@@ -1,13 +1,10 @@
 'use strict';
 
 var users = require('../../app/controllers/users.server.controller'),
-	decks = require('../../app/controllers/decks.server.controller'),
-	multer = require('multer');
+	decks = require('../../app/controllers/decks.server.controller');
 
 module.exports = function(app)
 {
-	app.use(multer({ dest: './public/uploads/' }));
-
 	app.route('/decks')
 		.get(decks.list)
 		.post(decks.create);
