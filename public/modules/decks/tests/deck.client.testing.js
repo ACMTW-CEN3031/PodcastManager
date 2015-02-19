@@ -51,15 +51,16 @@ describe('DeckController', function() {//the controller were testing
     it('finds the Deckservice Query', function() {
       var $scope = {};
       var controller = $controller('DeckController', { $scope: $scope });
-      expect($scope.).toEqual('');
+      $scope.find();
+      expect($scope.decks).toEqual('Deckservice.query()');
     });
   });
 
   describe('$scope.findOne', function() {
-    it('uploads an image to a deck', function() {
+    it('finds the deckID', function() {
       var $scope = {};
       var controller = $controller('DeckController', { $scope: $scope });
-      expect($scope.).toEqual('');
+      expect($scope.deck).toEqual('DeckService.get({deckId: $stateParams.deckId})');
     });
   });
 
