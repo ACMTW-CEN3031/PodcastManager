@@ -108,5 +108,9 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 				deckId: $stateParams.deckId
 			});
 		};
+
+		$scope.spreadFilter = function(deck){
+			return deck.inSpread
+		}
 	}
 ]);
