@@ -7,7 +7,8 @@ angular.module('messageBoard').config(['$stateProvider',
 		state('messageBoard',
 		{
 			url: '/messageBoard',
-			templateUrl: 'modules/messageBoard/views/messageBoard.client.view.html'
+			templateUrl: 'modules/messageBoard/views/messageBoard.client.view.html',
+			controller: 'messageController'
 		});
 	}
 ]);
