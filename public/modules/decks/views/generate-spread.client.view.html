@@ -13,7 +13,7 @@
 				<div class="panel-body">
 					<div ng-repeat="deck in decks">
 						<div class="thumbnail">
-							<img ng-src="http://i.imgur.com/{{deck.images[0]}}">
+							<img ng-src="http://i.imgur.com/{{deck.images[0]}}"  style="height:auto;width:auto;max-height:100px">
 								<div class="input-group">
 									<button type="button" class="btn btn-default" ng-model="deck.inSpread" btn-checkbox>{{deck.name}}</button> 
 
@@ -30,9 +30,9 @@
 					<h3 class="panel-title text-center">Spread</h3>
 				</div>
 				<div class="panel-body">
-					<div ng-repeat="deck in decks | filter:spreadFilter">
+					<div ng-repeat="deck in decks | filter:spreadFilter" class="col-md-6">
 						<div class="thumbnail">
-							<img ng-src="http://i.imgur.com/{{deck.images[0]}}">
+							<img ng-src="http://i.imgur.com/{{deck.images[0]}}"  style="height:auto;width:auto;max-height:200px">
 							{{deck.name}}
 						</div>
 					</div>
