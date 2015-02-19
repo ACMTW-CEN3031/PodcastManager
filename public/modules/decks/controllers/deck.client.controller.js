@@ -3,6 +3,7 @@
 angular.module('decks').controller('DeckController', ['$scope', '$stateParams', '$location', '$upload', 'DeckService',
 	function($scope, $stateParams, $location, $upload, DeckService)
 	{
+
 		$scope.create = function()
 		{
 			var deck = new DeckService({
@@ -109,8 +110,11 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			});
 		};
 
+
 		$scope.spreadFilter = function(deck){
-			return deck.inSpread
+			return deck.inSpread;
 		}
+
+
 	}
 ]);
