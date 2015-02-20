@@ -34,12 +34,13 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 		$scope.uploadImage = function(file)
 		{
 			var deck = $scope.deck;
-			$scope.uploading = true;
 
 			var fileReader = new FileReader();
 			fileReader.readAsArrayBuffer(file);
 			fileReader.onload = function(e)
 			{
+				$scope.uploading = true;
+				
 				$upload.http({
 					url: 'https://api.imgur.com/3/image',
 					headers:
