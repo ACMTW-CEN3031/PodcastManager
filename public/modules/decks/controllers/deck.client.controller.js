@@ -40,7 +40,7 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			fileReader.onload = function(e)
 			{
 				$scope.uploading = true;
-				
+
 				$upload.http({
 					url: 'https://api.imgur.com/3/image',
 					headers:
@@ -49,16 +49,9 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
        				},
        				data: e.target.result
 				})
-				.then(function(result)
+				.success(function(result)
 				{
-					var response = result.data;
-					if (response.status !== 200)
-					{
-						$scope.error = 'Could not communicate with imgur!';
-						return;
-					}
-
-					var url = response.data.link;
+					var url = result.data.link;
 					var split = url.lastIndexOf('/');
 
 					var name = url.substring(split);
@@ -73,11 +66,23 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 					},
 					function(err)
 					{
+						$scope.uploading = false;
+						$scope.uploadProgress = 0;
+
 						$scope.error = err.data.message;
 					});
-				},
-				null,
-				function(evt)
+				})
+				.error(function(err)
+				{
+					$scope.uploading = false;
+					$scope.uploadProgress = 0;
+					
+					if (err.status === 400)
+						$scope.error = 'Invalid file!';
+					else
+						$scope.error = 'Could not communicate with imgur!';
+				})
+				.progress(function(evt)
 				{
 					// Decrease the percentage since 99% looks done when it is not.
 					var percent = parseInt(100.0 * evt.loaded / evt.total);

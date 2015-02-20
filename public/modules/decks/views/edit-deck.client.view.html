@@ -9,6 +9,9 @@
 		<div class="progress" data-ng-show="uploading">
 			<div class="progress-bar" role="progressbar" style="width: {{uploadProgress}}%"></div>
 		</div>
+		<div class="text-danger" data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
 	</div>
 	
 	<div data-ng-repeat="image in deck.images" class="col-sm-6 col-md-4">
