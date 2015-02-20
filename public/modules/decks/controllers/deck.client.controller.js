@@ -66,6 +66,8 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 					deck.$update(function(res)
 					{
 						$scope.uploading = false;
+						$scope.uploadProgress = 0;
+
 						$location.path('decks/' + res._id + '/edit');
 					},
 					function(err)
@@ -76,7 +78,9 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 				null,
 				function(evt)
 				{
-					$scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total);
+					// Decrease the percentage since 99% looks done when it is not.
+					var percent = parseInt(100.0 * evt.loaded / evt.total);
+					$scope.uploadProgress = Math.max(percent - 5, 0);
 				});
 			};
 		};
@@ -110,11 +114,10 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			});
 		};
 
-
-		$scope.spreadFilter = function(deck){
+		$scope.spreadFilter = function(deck)
+		{
 			return deck.inSpread;
-		}
-
+		};
 
 	}
 ]);
