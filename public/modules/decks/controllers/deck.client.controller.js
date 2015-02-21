@@ -120,9 +120,50 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			});
 		};
 
-		$scope.spreadFilter = function(deck)
-		{
-			return deck.inSpread;
+
+		$scope.filteredDecks = [];
+		$scope.cardsInSpread = [];
+		$scope.numberOfCardsToShow = 2;
+
+		$scope.onDeckClick = function(deck)
+        {
+        	deck.inSpread = !deck.inSpread;
+			if (deck.inSpread){
+				$scope.filteredDecks.push(deck);
+			}
+			else {
+				var deckIndex = $scope.filteredDecks.indexOf(deck);
+				if (deckIndex != -1){
+					$scope.filteredDecks.splice(deckIndex, 1);
+				}
+			}
+
+			$scope.updateInSpread();
+		};
+
+		$scope.onGoClick = function(){
+			//TODO: Ensure only numbers are passed to input field
+			$scope.numberOfCardsToShow = parseInt($scope.numDecks);
+
+			//other spew
+
+			$scope.updateInSpread();
+		}
+		$scope.updateInSpread = function(){
+			$scope.cardsInSpread = [];
+
+			var i = 0;
+			for (i = 0; i < $scope.numberOfCardsToShow; i++){
+				var randomIndex = Math.floor(Math.random() * $scope.filteredDecks.length);
+				var selectedDeck = $scope.filteredDecks[randomIndex];
+
+				var randomImage = Math.floor(Math.random() * $scope.filteredDecks[randomIndex].images.length);
+				var selectedImage = selectedDeck.images[randomImage];
+
+				$scope.cardsInSpread.push(selectedImage);
+			}
+
+			$scope.$apply();
 		};
 
 	}

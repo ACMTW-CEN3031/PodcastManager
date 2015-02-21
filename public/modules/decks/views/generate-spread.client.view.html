@@ -16,7 +16,8 @@
 							<img ng-src="http://i.imgur.com/{{deck.images[0]}}"  style="height:auto;width:auto;max-height:100px">
 								<center>
 								<div class="input-group">
-									<button type="button" class="btn btn-info" ng-model="deck.inSpread" btn-checkbox>{{deck.name}}</button> 
+									<button type="button" class="btn btn-info" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
+									<h3 class="text-center">{{deck.inSpread}}</h3>
 								</div>
 								</center>
 						</div>
@@ -31,10 +32,9 @@
 					<h3 class="panel-title text-center">Spread</h3>
 				</div>
 				<div class="panel-body">
-					<div ng-repeat="deck in decks | filter:spreadFilter" class="col-md-6">
+					<div ng-repeat="image in cardsInSpread" class="col-md-6">
 						<div class="thumbnail">
-							<img ng-src="http://i.imgur.com/{{deck.images[0]}}"  style="height:auto;width:auto;max-height:200px">
-							{{deck.name}}
+							<img ng-src="http://i.imgur.com/{{image}}"  style="height:auto;width:auto;max-height:200px">
 						</div>
 					</div>
 				</div>
@@ -47,25 +47,25 @@
 					<h3 class="panel-title text-center">Options</h3>
 				</div>
 				<div class="panel-body">							
-					<form class="form-horizontal" role="form">
+					<form class="form-horizontal" role="form" ng-submit="onGoClick()">
 						<div style="margin-bottom: 25px" class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
-							<input type="text" class="form-control" ng-change="updateSpread" ng-model="cardsToShow" placeholder="# of decks">
+							<input type="text" class="form-control" ng-model="numDecks" placeholder="# of decks">
 						</div>
 
+						<div class="list-group">
+							<a href="#" class="list-group-item">Make a Spread</a>
+							<a href="#" class="list-group-item">Randomly Draw</a>
+							<a href="#" class="list-group-item">Refresh Cards</a>
+							<br clear = "both">
+							<div class="input-group">
+								<span class="input-group-btn pull-right">
+									<button class="btn btn-default" type="submit">Refresh</button>
+								</span>
+							</div>
+						</div>
 					</form>
 
-					<div class="list-group">
-						<a href="#" class="list-group-item">Make a Spread</a>
-						<a href="#" class="list-group-item">Randomly Draw</a>
-						<a href="#" class="list-group-item">Refresh Cards</a>
-						<br clear = "both">
-						<div class="input-group">
-							<span class="input-group-btn pull-right">
-								<button class="btn btn-default" type="button">Go!</button>
-							</span>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
