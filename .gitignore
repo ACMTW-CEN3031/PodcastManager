@@ -8,3 +8,4 @@ app/tests/coverage/
 .bower-*/
 .idea/
 /development.js
+config/env/development.js
