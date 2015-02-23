@@ -4,6 +4,14 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 	function($scope, $stateParams, $location, $upload, DeckService)
 	{
 
+		//Used in Spread generation
+		$scope.filteredDecks = [];
+		$scope.cardsInSpread = [];
+		$scope.cardsPerDeck = 1;
+
+		$scope.randomize = false;
+		$scope.randomCardAmt = 2;
+
 		$scope.create = function()
 		{
 			var deck = new DeckService({
@@ -121,10 +129,6 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 		};
 
 
-		$scope.filteredDecks = [];
-		$scope.cardsInSpread = [];
-		$scope.numberOfCardsToShow = 2;
-
 		$scope.onDeckClick = function(deck)
         {
         	deck.inSpread = !deck.inSpread;
@@ -141,29 +145,76 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			$scope.updateInSpread();
 		};
 
-		$scope.onGoClick = function(){
-			//TODO: Ensure only numbers are passed to input field
-			$scope.numberOfCardsToShow = parseInt($scope.numDecks);
 
-			//other spew
+		$scope.onRefreshClick = function()
+		{
+			if ($scope.randomize)
+			{
+				var i = 0;
+				for (i = 0; i != $scope.decks.length; ++i)	{
+					$scope.decks[i].inSpread = false;
+				}
 
-			$scope.updateInSpread();
-		}
-		$scope.updateInSpread = function(){
-			$scope.cardsInSpread = [];
+				$scope.randomizeDecks();
+			}
+			else
+			{
+				var i = 0;
+				for (i = 0; i != $scope.filteredDecks.length; ++i){
+					$scope.filteredDecks[i].inSpread = true;
+				}
 
-			var i = 0;
-			for (i = 0; i < $scope.numberOfCardsToShow; i++){
-				var randomIndex = Math.floor(Math.random() * $scope.filteredDecks.length);
-				var selectedDeck = $scope.filteredDecks[randomIndex];
-
-				var randomImage = Math.floor(Math.random() * $scope.filteredDecks[randomIndex].images.length);
-				var selectedImage = selectedDeck.images[randomImage];
-
-				$scope.cardsInSpread.push(selectedImage);
+				$scope.updateInSpread();
 			}
 
 			$scope.$apply();
+		}
+
+		$scope.updateInSpread = function()
+		{
+			//TODO: error checking for parseInt
+			$scope.cardsPerDeck = parseInt($scope.cardsPerDeck);
+			$scope.cardsInSpread = [];
+
+			//browse through each deck and pick $scope.cardsPerDeck random cards to display
+			var i = 0;
+			for (i = 0; i != $scope.filteredDecks.length; ++i)
+			{
+				var deck = $scope.filteredDecks[i];
+				var j = 0;
+				for (j = 0; j != $scope.cardsPerDeck; ++j)
+				{
+					var randomIndex = Math.floor(Math.random() * deck.images.length);
+					var selectedImage = deck.images[randomIndex];
+
+					$scope.cardsInSpread.push(selectedImage);
+				}
+			}
+
+			$scope.$apply();
+		};
+
+		$scope.randomizeDecks = function()
+		{
+			//TODO: error checking for parseInt
+			$scope.randomCardAmt = parseInt($scope.randomCardAmt);
+			$scope.cardsInSpread = [];
+			
+			var i = 0;
+			for (i = 0; i != $scope.randomCardAmt; ++i)	{
+				var randomDeckIndex = Math.floor(Math.random() * $scope.decks.length);
+				var selectedDeck = $scope.decks[randomDeckIndex];
+
+				selectedDeck.inSpread = true;
+
+				var randomImageIndex = Math.floor(Math.random() * selectedDeck.images.length);
+				var selectedImage = selectedDeck.images[randomImageIndex];
+
+				$scope.cardsInSpread.push(selectedImage); 
+			}
+
+			$scope.$apply();
+			
 		};
 
 	}

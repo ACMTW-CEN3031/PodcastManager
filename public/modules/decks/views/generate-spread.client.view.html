@@ -3,7 +3,7 @@
 	<div class="page-header">
 		<h1>Generate a Spread</h1>
 	</div>
-
+	<div class="row" 
 	<div class="row" ng-controller="DeckController" ng-init="find()">
 		<div class="col-md-2">
 			<div class="panel panel-info">
@@ -47,10 +47,22 @@
 					<h3 class="panel-title text-center">Options</h3>
 				</div>
 				<div class="panel-body">							
-					<form class="form-horizontal" role="form" ng-submit="onGoClick()">
-						<div style="margin-bottom: 25px" class="input-group">
-							<span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
-							<input type="text" class="form-control" ng-model="numDecks" placeholder="# of decks">
+					<form class="form-horizontal" role="form" ng-submit="onRefreshClick()">
+						<div class="input-group" style="margin-bottom: 25px" >
+								<span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
+								<input type="text" class="form-control" ng-model="cardsPerDeck" placeholder="Cards / Deck">
+						</div>
+
+						<div class="input-group" style="margin-bottom: 25px" >
+							<button class="btn btn-default" ng-hide="randomize" ng-model="randomize" btn-checkbox>
+								<i class="glyphicon glyphicon-random"></i>
+							</button>
+							<span class="input-group-btn">
+								<button class="btn btn-primary" ng-show="randomize" ng-model="randomize" btn-checkbox>
+									<i class="glyphicon glyphicon-random"></i>
+								</button>
+							</span>
+							<input type="text" class="form-control" ng-show="randomize" ng-model="randomCardAmt" placeholder="Card Amount">
 						</div>
 
 						<div class="list-group">
@@ -59,8 +71,10 @@
 							<a href="#" class="list-group-item">Refresh Cards</a>
 							<br clear = "both">
 							<div class="input-group">
-								<span class="input-group-btn pull-right">
-									<button class="btn btn-default" type="submit">Refresh</button>
+								<span class="input-group-btn">
+									<center>
+										<button class="btn btn-default" type="submit">Refresh</button>
+									</center>
 								</span>
 							</div>
 						</div>

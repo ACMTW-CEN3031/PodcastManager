@@ -11,28 +11,7 @@ describe('DeckController', function()
 		$stateParams = _$stateParams_;
 	}));
 
-/*
-	describe('$scope.create', function() {//The function were testing
-		it('creates a deck for the user', function() {
-			var $scope = {};
-			var controller = $controller('DeckController', { $scope: $scope }); 
-			var deckLength = $scope.decks.length;
-			$scope.create();
-			expect($scope.decks.length).toEqual(decklength+1);
-		});
-	});
 
-	describe('$scope.remove', function() {
-		it('removes a deck from the user', function() {
-			var $scope = {};
-			var controller = $controller('DeckController', { $scope: $scope });
-			var deck = $scope.create();
-			var deckLength = $scope.decks.length;
-			$scope.remove(deck);
-			expect($scope.deckLength).toEqual(deckLength-1);
-		});
-	});
-*/
 
 	it('Adds an image to a deck', function(Deck)
 	{
@@ -50,16 +29,7 @@ describe('DeckController', function()
 		expect(scope.deck.images.length).toEqual(imagesCount-1);
 	});
 
-/*
-	describe('$scope.find', function() {
-		it('finds the Deckservice Query', function() {
-			var $scope = {};
-			var controller = $controller('DeckController', { $scope: $scope });
-			$scope.find();
-			expect($scope.decks).toEqual('Deckservice.query()');
-		});
-	});
-*/
+
 
 	it('Finds a single deck based on ID', function(Deck)
 	{
