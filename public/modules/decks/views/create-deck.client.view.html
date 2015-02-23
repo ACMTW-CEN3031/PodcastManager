@@ -6,7 +6,15 @@
 
 	<form name="deckForm" data-ng-submit="create()">
 		<label class="control-label" for="name">Deck name:</label>
+		<br/>
 		<input name="name" type="text" data-ng-model="name" id="name" required>
+		<br/><br/>
+
+		<label class="control-label" for="description">Deck description:</label>
+		<br/>
+		<input name="description" type="text" data-ng-model="description" id="description">
+		<br/><br/>
+		
 		<input type="submit">
 
 		<div data-ng-show="error" class="text-danger">

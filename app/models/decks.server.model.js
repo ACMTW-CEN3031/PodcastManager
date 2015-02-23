@@ -11,6 +11,11 @@ var DeckSchema = new Schema({
 		required: 'Deck must have a name',
 		unique: true
 	},
+	description:
+	{
+		type: String,
+		default: ''
+	},
 	images:
 	{
 		type: [String],

@@ -15,7 +15,8 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 		$scope.create = function()
 		{
 			var deck = new DeckService({
-				name: this.name
+				name: this.name,
+				description: this.description
 			});
 
 			deck.$save(function(res)
@@ -23,6 +24,7 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 				$location.path('decks/' + res._id);
 
 				$scope.name = '';
+				$scope.description = '';
 			},
 			function(err)
 			{
