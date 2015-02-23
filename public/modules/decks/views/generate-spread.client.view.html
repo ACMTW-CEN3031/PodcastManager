@@ -33,8 +33,8 @@
 				</div>
 				<div class="panel-body">
 					<div ng-repeat="image in cardsInSpread" class="col-md-6">
-						<div class="thumbnail" style="width: 250px; height= 250px; overflow=hidden">
-							<img ng-src="http://i.imgur.com{{image}}"  style="height:auto;width:auto;max-height:200px">
+						<div class="thumbnail">
+							<img ng-src="http://i.imgur.com/{{image}}"  style="height:auto;width:auto;max-height:200px">
 						</div>
 					</div>
 				</div>
@@ -54,21 +54,30 @@
 						</div>
 
 						<div class="input-group" style="margin-bottom: 25px" >
-							<button class="btn btn-default" ng-hide="randomize" ng-click="onRandomClick()" btn-checkbox>
+							<button class="btn btn-default" ng-hide="randomize" ng-model="randomize" btn-checkbox>
 								<i class="glyphicon glyphicon-random"></i>
 							</button>
 							<span class="input-group-btn">
-								<button class="btn btn-primary" ng-show="randomize" ng-click="onRandomClick()" btn-checkbox>
+								<button class="btn btn-primary" ng-show="randomize" ng-model="randomize" btn-checkbox>
 									<i class="glyphicon glyphicon-random"></i>
 								</button>
 							</span>
 							<input type="text" class="form-control" ng-show="randomize" ng-model="randomCardAmt" placeholder="Card Amount">
 						</div>
-						<span class="input-group-btn">
-							<center>
-								<button class="btn btn-default" type="submit">Refresh</button>
-							</center>
-						</span>
+
+						<div class="list-group">
+							<a href="#" class="list-group-item">Make a Spread</a>
+							<a href="#" class="list-group-item">Randomly Draw</a>
+							<a href="#" class="list-group-item">Refresh Cards</a>
+							<br clear = "both">
+							<div class="input-group">
+								<span class="input-group-btn">
+									<center>
+										<button class="btn btn-default" type="submit">Refresh</button>
+									</center>
+								</span>
+							</div>
+						</div>
 					</form>
 
 				</div>
