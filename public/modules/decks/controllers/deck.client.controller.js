@@ -139,7 +139,7 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			}
 			else {
 				var deckIndex = $scope.filteredDecks.indexOf(deck);
-				if (deckIndex != -1){
+				if (deckIndex !== -1){
 					$scope.filteredDecks.splice(deckIndex, 1);
 				}
 			}
@@ -147,13 +147,25 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			$scope.updateInSpread();
 		};
 
+		$scope.onRandomClick = function()
+		{
+			$scope.randomize = !$scope.randomize;
+			$scope.randomCardAmt = $scope.cardsPerDeck;
+			for (i = 0; i !== $scope.decks.length; ++i)
+			{
+				$scope.decks[i].inSpread = false;
+			}
+
+			$scope.randomizeDecks();
+
+		};
 
 		$scope.onRefreshClick = function()
 		{
+			var i = 0;
 			if ($scope.randomize)
 			{
-				var i = 0;
-				for (i = 0; i != $scope.decks.length; ++i)	{
+				for (i = 0; i !== $scope.decks.length; ++i)	{
 					$scope.decks[i].inSpread = false;
 				}
 
@@ -161,39 +173,38 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			}
 			else
 			{
-				var i = 0;
-				for (i = 0; i != $scope.filteredDecks.length; ++i){
+				for (i = 0; i !== $scope.filteredDecks.length; ++i){
 					$scope.filteredDecks[i].inSpread = true;
 				}
 
 				$scope.updateInSpread();
 			}
 
-			$scope.$apply();
-		}
+		};
 
 		$scope.updateInSpread = function()
 		{
+
 			//TODO: error checking for parseInt
 			$scope.cardsPerDeck = parseInt($scope.cardsPerDeck);
 			$scope.cardsInSpread = [];
 
-			//browse through each deck and pick $scope.cardsPerDeck random cards to display
-			var i = 0;
-			for (i = 0; i != $scope.filteredDecks.length; ++i)
-			{
-				var deck = $scope.filteredDecks[i];
-				var j = 0;
-				for (j = 0; j != $scope.cardsPerDeck; ++j)
+				//browse through each deck and pick $scope.cardsPerDeck random cards to display
+				var i = 0;
+				for (i = 0; i !== $scope.filteredDecks.length; ++i)
 				{
-					var randomIndex = Math.floor(Math.random() * deck.images.length);
-					var selectedImage = deck.images[randomIndex];
+					var deck = $scope.filteredDecks[i];
+					var j = 0;
+					for (j = 0; j !== $scope.cardsPerDeck; ++j)
+					{
+						var randomIndex = Math.floor(Math.random() * deck.images.length);
+						var selectedImage = deck.images[randomIndex];
 
-					$scope.cardsInSpread.push(selectedImage);
+						$scope.cardsInSpread.push(selectedImage);
+					}
 				}
-			}
 
-			$scope.$apply();
+			
 		};
 
 		$scope.randomizeDecks = function()
@@ -201,21 +212,19 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			//TODO: error checking for parseInt
 			$scope.randomCardAmt = parseInt($scope.randomCardAmt);
 			$scope.cardsInSpread = [];
+
+				var i = 0;
+				for (i = 0; i !== $scope.randomCardAmt; ++i)	
+				{
+					var randomDeckIndex = Math.floor(Math.random() * $scope.decks.length);
+					var selectedDeck = $scope.decks[randomDeckIndex];
+
+					var randomImageIndex = Math.floor(Math.random() * selectedDeck.images.length);
+					var selectedImage = selectedDeck.images[randomImageIndex];
+
+					$scope.cardsInSpread.push(selectedImage);
+				}
 			
-			var i = 0;
-			for (i = 0; i != $scope.randomCardAmt; ++i)	{
-				var randomDeckIndex = Math.floor(Math.random() * $scope.decks.length);
-				var selectedDeck = $scope.decks[randomDeckIndex];
-
-				selectedDeck.inSpread = true;
-
-				var randomImageIndex = Math.floor(Math.random() * selectedDeck.images.length);
-				var selectedImage = selectedDeck.images[randomImageIndex];
-
-				$scope.cardsInSpread.push(selectedImage); 
-			}
-
-			$scope.$apply();
 			
 		};
 
