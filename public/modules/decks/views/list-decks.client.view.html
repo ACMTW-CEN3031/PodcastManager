@@ -12,7 +12,7 @@
 				<img data-ng-src="http://i.imgur.com/{{deck.images[0]}}"  style="width:auto;height:200px">
 				</div>
 			<h3><a data-ng-href="#!/decks/{{deck._id}}" data-ng-bind="deck.name"></a></h3>
-			<p data-ng-bind="deck.description"></p>
+			<p data-ng-bind="deck.description || 'This deck has no description'"></p>
 			<p>
 				<a href="#" class="btn btn-primary" role="button" data-ng-href="#!/decks/{{deck._id}}">Browse</a>
 				<a href="#" class="btn btn-primary" role="button" data-ng-href="#!/decks/{{deck._id}}/edit">Edit</a>
