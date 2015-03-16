@@ -1,17 +1,18 @@
 'use strict';
-var app = angular.module('messageBoard', []);
+var app = angular.module('messageBoard', ['ui.router']);
+
+app.factory('posts', [function(){
+  var o = {
+    posts: []
+  };
+  return o;
+}]);
 
 app.controller('MainCtrl', [
 '$scope',
+'posts'
 function($scope){
   $scope.test = 'Hello world!';
-  $scope.posts = [
-  'post 1',
-  'post 2',
-  'post 3',
-  'post 4',
-  'post 5'
-];
+  $scope.posts = posts.posts;
 
 }]);
-
