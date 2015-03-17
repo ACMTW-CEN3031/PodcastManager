@@ -151,7 +151,7 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 		{
 			$scope.randomize = !$scope.randomize;
 			$scope.randomCardAmt = $scope.cardsPerDeck;
-			for (i = 0; i !== $scope.decks.length; ++i)
+			for (var i = 0; i !== $scope.decks.length; ++i)
 			{
 				$scope.decks[i].inSpread = false;
 			}

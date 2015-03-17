@@ -36,6 +36,6 @@ describe('DeckController', function()
 		var deck = new Deck({ _id: '525a8422f6d0f87f0e407a33', name: 'Test', images: ['init.jpg'] });
 		$stateParams.deckId = deck._id;
 		scope.findOne();
-		expect($scope.deck).toEqual(deck);
+		expect(scope.deck).toEqual(deck);
 	});
 });
