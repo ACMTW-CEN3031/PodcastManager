@@ -4,17 +4,21 @@
     <div id="header-div"class="page-header">
     	<h1 id="head" class="col-md-7 col-md-offset-3">Welcome to the Message Board<h1>
     </div>
-      <div class="col-md-7 col-md-offset-0" id="messages">
+      <div class="col-md-3" id="messages">
         <div id="posts" ng-repeat="post in posts | orderBy: 'count'">
           <div>
             <a ng-show="post.link" href="{{post.link}}">
               <b>
-              {{post.title}}
+                <h4>
+                  {{post.title}}
+                </h4>
               </b>
             </a>
             <span ng-hide="post.link">
               <b>
-              {{post.title}}
+                <h4>
+                  {{post.title}}
+                </h4>
               </b>
             </span>
           </div>
@@ -27,6 +31,9 @@
             </span>
           </div>  
         </div>
+      </div>
+      <div id="displayMessage" class="col-md-7">
+        messages displayed here.
       </div>
       <div class="col-md-0 col-md-offset-10">
         <form ng-submit="addPost()"style="margin-top:30px;">
@@ -51,9 +58,11 @@
         <style>
           #posts {
               background-color: #E8E8E8;
-              width: 200px;
+              width: 215px;
               height:75px;
               border: 1px solid;
+              display: inline-block;
+              overflow: auto;
           }
           #input{
             width: 200px;
@@ -62,7 +71,11 @@
             width: 250px;
             height: 600px;
             border: 1px solid;
+            text-align: center;
             overflow: auto;
+          }
+          #displayMessage{
+
           }
         </style>
   </section>
