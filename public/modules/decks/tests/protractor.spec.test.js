@@ -26,6 +26,22 @@ describe('Deck management', function()
 		expect(element(by.binding('error')).getText()).toEqual('Name already exists');
 	});
 
+	it('should be able to browse the deck images', function()
+	{
+		browser.get('#!/decks');
+		element.all(by.repeater('deck in decks')).get(0).element(by.id('browse')).click();
+
+		expect(element(by.binding('deck.name')).getText()).toEqual('*Protractor Deck');
+	});
+
+	it('should be able to edit the deck images', function()
+	{
+		browser.get('#!/decks');
+		element.all(by.repeater('deck in decks')).get(0).element(by.id('edit')).click();
+
+		expect(element(by.binding('deck.name')).getText()).toEqual('Edit *Protractor Deck');
+	});
+
 	it('should be able to upload images to the deck', function()
 	{
 		browser.get('#!/decks');
