@@ -6,18 +6,18 @@ module.exports = {
 		title: 'SequentialArtistsWorkshopWebInterface - Development Environment'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || 'coreygoldenbergistheman',
-		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET',
+		clientID: process.env.FACEBOOK_ID || '607795356017851',
+		clientSecret: process.env.FACEBOOK_SECRET || '67fed15e03d18731414072b270cf875f',
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {
-		clientID: process.env.TWITTER_KEY || 'CONSUMER_KEY',
-		clientSecret: process.env.TWITTER_SECRET || 'CONSUMER_SECRET',
+		clientID: process.env.TWITTER_KEY || '88M9PXH3xxPxwJyCgJlr35rcN',
+		clientSecret: process.env.TWITTER_SECRET || 'ZGEmTFSK4RyiGv0yVHGuE30cIdMq9eLUHC2JZf4KUf7e3eqFNF',
 		callbackURL: '/auth/twitter/callback'
 	},
 	google: {
-		clientID: process.env.GOOGLE_ID || 'APP_ID',
-		clientSecret: process.env.GOOGLE_SECRET || 'APP_SECRET',
+		clientID: process.env.GOOGLE_ID || '255065928936-6pihiqvldbjrv1odkb9g6qg004qkojeu.apps.googleusercontent.com',
+		clientSecret: process.env.GOOGLE_SECRET || '72e_-heH2A0XT-xKXY_mhnMi',
 		callbackURL: '/auth/google/callback'
 	},
 	linkedin: {
