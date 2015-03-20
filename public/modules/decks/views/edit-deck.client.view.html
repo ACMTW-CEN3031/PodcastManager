@@ -4,7 +4,7 @@
 		<h1>Edit {{deck.name}}</h1>
 	</div>
 
-	<div class="form-group">
+	<div class="form-group" id="image_upload">
 		<div class="btn btn-primary" role="button" class="button" ng-file-select data-ng-file-change="uploadImage($files[0])">Upload an image</div>
 		<div class="progress" data-ng-show="uploading">
 			<div class="progress-bar" role="progressbar" style="width: {{uploadProgress}}%"></div>
@@ -17,7 +17,7 @@
 	<div data-ng-repeat="image in deck.images" class="col-sm-6 col-md-4">
 		<div class="thumbnail">
 			<img data-ng-src="http://i.imgur.com/{{image}}"  style="width:auto;height:200px">
-			<p><a data-ng-click="removeImage(image)" class="btn btn-danger" role="button">Delete</a></p>
+			<p><a id="delete" data-ng-click="removeImage(image)" class="btn btn-danger" role="button">Delete</a></p>
 		</div>
 	</div>
 

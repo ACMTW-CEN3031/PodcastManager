@@ -1,3 +1,5 @@
+var path = require('path');
+
 describe('Deck management', function()
 {
 	it('should create a deck', function()
@@ -22,6 +24,36 @@ describe('Deck management', function()
 		element(by.id('create_submit')).click();
 
 		expect(element(by.binding('error')).getText()).toEqual('Name already exists');
+	});
+
+	it('should be able to upload images to the deck', function()
+	{
+		browser.get('#!/decks');
+		element.all(by.repeater('deck in decks')).get(0).element(by.id('edit')).click();
+
+		var form = element(by.id('image_upload'));
+		var target = '../../users/img/buttons/github.png';
+		var abspath = path.resolve(__dirname, target);
+
+		form.$('input[type="file"]').sendKeys(abspath);
+		form.$('.btn').click();
+
+		target = '../../users/img/buttons/twitter.png';
+		abspath = path.resolve(__dirname, target);
+
+		form.$('input[type="file"]').sendKeys(abspath);
+		form.$('.btn').click();
+
+		expect(element.all(by.repeater('image in deck.images')).count()).toEqual(2);
+	});
+
+	it('should be able to delete an uploaded image', function()
+	{
+		browser.get('#!/decks');
+		element.all(by.repeater('deck in decks')).get(0).element(by.id('edit')).click();
+
+		element.all(by.repeater('image in deck.images')).get(0).element(by.id('delete')).click();
+		expect(element.all(by.repeater('image in deck.images')).count()).toEqual(1);
 	});
 
 	it('should delete the deck', function()
