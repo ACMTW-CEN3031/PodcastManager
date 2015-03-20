@@ -1,8 +1,8 @@
 //Login test
 describe('Authentication capabilities', function() {
   var loginURL;
-  var email = element(by.name('username'));
-  var password = element(by.name('password'));
+  var email = element(by.id('username'));
+  var password = element(by.id('password'));
   var loginButton = element(by.id('signinbutton'));
   var error = element(by.binding('error'));
 
