@@ -2,10 +2,20 @@
 	<h3 class="col-md-12 text-center">Edit your profile</h3>
 	<div>
 		<div class="col-md-offset-1 col-md-2">
-			<img src="https://assets-instamotor.imgix.net/user-icon-silhouette.png" style = "width:300px; height:250px">
-			Upload image <input type="file" data-ng-file-select="onFileSelect($files)" accept="image/png, image/jpeg">
-			<span data-ng-if="uploadInProgress">Upload progress: {{ uploadProgress }}</span>
-			<img data-ng-src="uploadedImage" data-ng-if="uploadedImage">
+			<div data-ng-if="!user.thumbnail">
+				<img data-ng-src="https://assets-instamotor.imgix.net/user-icon-silhouette.png" style = "width:300px; height:250px">
+			</div>
+			<div data-ng-if="user.thumbnail">
+				<img data-ng-src="http://i.imgur.com/{{user.thumbnail}}" style="width: 300px; height: 250px">
+			</div>
+
+			<div class="btn btn-primary" role="button" class="button" ng-file-select data-ng-file-change="uploadImage($files[0])">Upload an image</div>
+			<div class="progress" data-ng-show="uploading">
+				<div class="progress-bar" role="progressbar" style="width: {{uploadProgress}}%"></div>
+			</div>
+			<div class="text-danger" data-ng-show="error">
+				<strong data-ng-bind="error"></strong>
+			</div>
 		</div>
 		<div class="col-xs-offset-2 col-xs-8 col-md-offset-2 col-md-2">
 			<form name="userForm" data-ng-submit="updateUserProfile(userForm.$valid)" class="signin form-horizontal" autocomplete="off">
