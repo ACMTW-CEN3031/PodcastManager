@@ -16,8 +16,8 @@
 							<img ng-src="http://i.imgur.com/{{deck.images[0]}}" class="img-rounded" style="height:auto;width:auto;max-height:100px">
 								<center>
 								<div class="input-group">
-									<button type="button" class="btn btn-info"  ng-hide="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
-									<button type="button" class="btn btn-primary" ng-show="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
+									<button type="button" id="toggleOn" class="btn btn-info"  ng-hide="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
+									<button type="button" id="toggleOff" class="btn btn-primary" ng-show="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
 								</div>
 								</center>
 						</div>
