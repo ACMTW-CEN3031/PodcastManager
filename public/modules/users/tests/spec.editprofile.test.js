@@ -43,11 +43,25 @@ describe('Edit Profile capabilities', function() {
     expect(error.getText()).toMatch('Please fill in a username');
   });
 
+  it('should save profile successfully if all fields are valid', function(){
+      browser.get('/#!/settings/profile');
+      firstName.clear();
+      lastName.clear();
+      email.clear();
+      username.clear();
+      firstName.sendKeys('testFirstName');
+      lastName.sendKeys('testLastName');
+      email.sendKeys('cen3031@ufl.edu');
+      username.sendKeys('test');
+      saveProfile.click();
+      expect(success.getText()).toMatch('Profile Saved Successfully');
+  });
+
   // it('should not allow save profile with invalid email format', function() {
   //   email.clear();
   //   email.sendKeys('cen3031');
   //   saveProfile.click();
-  //   expect(element(by.binding('success'))).toEqual(null);
+  //   expect();
   // });
 
   // it('should return to the login page after logout', function() {

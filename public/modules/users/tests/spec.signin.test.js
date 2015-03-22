@@ -42,7 +42,7 @@ describe('Authentication capabilities', function() {
     expect(browser.getCurrentUrl()).not.toEqual(loginURL);
   });
 
-      it('should return to the home page after logout', function() {
+  it('should return to the home page after logout', function() {
     var menuDropdown = element(by.binding('authentication.user.displayName'));
     menuDropdown.click();
     var logoutButton = element(by.id('signoutbutton'));
