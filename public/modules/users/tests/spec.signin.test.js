@@ -32,9 +32,9 @@ describe('Authentication capabilities', function() {
     expect(error.getText()).toMatch('Missing credentials');
   });
 
+
   it('should accept a valid email address and password', function() {
-    email.clear();
-    password.clear();
+    browser.get('/#!/signin');
 
     email.sendKeys('test');
     password.sendKeys('testtest');
@@ -42,11 +42,16 @@ describe('Authentication capabilities', function() {
     expect(browser.getCurrentUrl()).not.toEqual(loginURL);
   });
 
-  it('should return to the login page after logout', function() {
+      it('should return to the home page after logout', function() {
     var menuDropdown = element(by.binding('authentication.user.displayName'));
     menuDropdown.click();
     var logoutButton = element(by.id('signoutbutton'));
     logoutButton.click();
     expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/');
+    browser.get('/#!/signin');
+
+    email.sendKeys('test');
+    password.sendKeys('testtest');
+    loginButton.click();
   });
 });
