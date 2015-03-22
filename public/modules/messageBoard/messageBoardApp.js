@@ -3,7 +3,7 @@ var app = angular.module('messageBoard', ['ui.router']);
 
 app.factory('posts', [function(){
   var o = {
-    posts: []
+    posts: [];
   };
   return o;
 }]);
@@ -12,7 +12,6 @@ app.controller('MainCtrl', [
 '$scope',
 'posts'
 function($scope){
-  $scope.test = 'Hello world!';
   $scope.posts = posts.posts;
 
 }]);
