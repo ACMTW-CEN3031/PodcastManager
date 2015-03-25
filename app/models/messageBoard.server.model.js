@@ -21,7 +21,7 @@ var MessageBoardSchema = new Schema({
 	},
 	comments:
 	{
-		type: string,
+		type: String,
 		default: ''
 	}
 });
