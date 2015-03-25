@@ -5,14 +5,16 @@ var users = require('../../app/controllers/users.server.controller'),
 
 module.exports = function(app)
 {
+	// FIXME: Uncomment the 'hasAuthorization' lines once a user exists who is a teacher/admin.
+
 	app.route('/decks')
-		.get(decks.list)
-		.post(decks.create);
+		.get(users.requiresLogin, decks.list)
+		.post(users.requiresLogin, /* users.hasAuthorization(['teacher', 'admin']), */ decks.create);
 
 	app.route('/decks/:deckId')
-		.get(decks.show)
-		.put(decks.update)
-		.delete(decks.delete);
+		.get(users.requiresLogin, decks.show)
+		.put(users.requiresLogin, /* users.hasAuthorization(['teacher', 'admin']), */ decks.update)
+		.delete(users.requiresLogin, /* users.hasAuthorization(['teacher', 'admin']), */ decks.delete);
 
 	app.param('deckId', decks.deckById);
 };
