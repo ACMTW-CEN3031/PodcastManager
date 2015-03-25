@@ -3,6 +3,8 @@
 angular.module('decks').config(['$stateProvider',
 	function($stateProvider)
 	{
+		// FIXME: Uncomment the below lines when there is an admin/teacher user.
+
 		$stateProvider.
 		state('generateSpread',
 		{
@@ -22,7 +24,8 @@ angular.module('decks').config(['$stateProvider',
 		state('createDeck',
 		{
 			url: '/decks/create',
-			templateUrl: 'modules/decks/views/create-deck.client.view.html'
+			templateUrl: 'modules/decks/views/create-deck.client.view.html',
+			data: { /* roles: ['teacher', 'admin'] */ }
 		}).
 		state('viewDeck',
 		{
@@ -32,7 +35,21 @@ angular.module('decks').config(['$stateProvider',
 		state('editDeck',
 		{
 			url: '/decks/:deckId/edit',
-			templateUrl: 'modules/decks/views/edit-deck.client.view.html'
+			templateUrl: 'modules/decks/views/edit-deck.client.view.html',
+			data: { /* roles: ['teacher', 'admin'] */ }
+		});
+	}
+]).run(['$rootScope', '$location', 'Authentication',
+	function($rootScope, $location, Authentication)
+	{
+		$rootScope.$on('$stateChangeStart', function(event, toState, toParams)
+		{
+			if (!Authentication.user)
+				$location.path('/');
+
+			var roles = (toState.data && toState.data.roles) ? toState.data.roles : null;
+			if (roles && !Authentication.meetsAnyRole(roles))
+				$location.path('/');
 		});
 	}
 ]);

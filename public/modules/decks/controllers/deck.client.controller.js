@@ -3,7 +3,6 @@
 angular.module('decks').controller('DeckController', ['$scope', '$stateParams', '$location', '$upload', 'DeckService',
 	function($scope, $stateParams, $location, $upload, DeckService)
 	{
-
 		//Used in Spread generation
 		$scope.filteredDecks = [];
 		$scope.cardsInSpread = [];
