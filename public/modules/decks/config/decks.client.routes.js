@@ -39,7 +39,7 @@ angular.module('decks').config(['$stateProvider',
 			data: { /* roles: ['teacher', 'admin'] */ }
 		});
 	}
-]).run(['$rootScope', '$location', 'Authentication',
+]);/*.run(['$rootScope', '$location', 'Authentication',
 	function($rootScope, $location, Authentication)
 	{
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams)
@@ -52,4 +52,4 @@ angular.module('decks').config(['$stateProvider',
 				$location.path('/');
 		});
 	}
-]);
+]);*/
