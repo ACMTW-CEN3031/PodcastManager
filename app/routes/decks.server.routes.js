@@ -9,7 +9,7 @@ module.exports = function(app)
 
 	app.route('/decks')
 		.get(users.requiresLogin, decks.list)
-		.post(users.requiresLogin, /* users.hasAuthorization(['teacher', 'admin']), */ decks.create);
+		.post(/*users.requiresLogin,*/ /* users.hasAuthorization(['teacher', 'admin']), */ decks.create);
 
 	app.route('/decks/:deckId')
 		.get(users.requiresLogin, decks.show)
