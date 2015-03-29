@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('messageBoard').controller('messageController', ['$scope', '$location', 'messageBoardService'
+angular.module('messageBoard').controller('messageController', ['$scope', '$location', 'messageBoardService',
 	function($scope, $location, messageBoardService)
 	{
 	$scope.posts = [];
@@ -24,13 +24,12 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 		var post = new messageBoardService({
 			title: this.name,
 			content: this.description,
-			link: this.link,
-			comments: this.description
+			link: this.link
 		});
 
 			post.$save(function(res)
 			{
-				$location.path('messageBoard/' + res._id);
+				//$location.path('messageBoard/' + res._id);
 
 				$scope.title = '';
 				$scope.content = '';
@@ -44,7 +43,8 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 	};
 	$scope.getPost = function(idNum){
 
-	}
+	};
+	/*
 	$scope.showMessage = function(){
 		var post = $scope.getPost(id-1);
 		alert(post.title);
@@ -52,9 +52,10 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 		document.getElementById('title').innerHTML = $scope.post.title;
 		document.getElementById('link').innerHTML = $scope.post.link;
 	};
+	*/
 	$scope.find = function()
 		{
-			$scope.posts = messageBoard.query();
+			$scope.posts = messageBoardService.query();
 		};
 
 	$scope.findOne = function()

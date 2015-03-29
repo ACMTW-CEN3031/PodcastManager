@@ -1,11 +1,9 @@
-  <section data-ng-controller = "messageController" data-ng-int="find()">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-    <script type="text/ng-template" id="/home.html"></script>
+  <section data-ng-controller = "messageController" data-ng-init="find()">
     <div id="header-div"class="page-header">
     	<h1 id="head" class="col-md-7 col-md-offset-3">Welcome to the Message Board<h1>
     </div>
       <div class="col-md-3" id="messages">
-          <div id="posts" ng-repeat="post in posts | orderBy:'-id'">
+          <div id="posts" data-ng-repeat="post in posts">
             <button ng-click="showMessage()" id="messageButton" ng-href="#displayMessage">
             <div>
               <a ng-show="post.link" href="{{post.link}}">
