@@ -8,9 +8,9 @@ module.exports = function(app)
 	app.route('/messageBoard')
 		.get(messageBoard.list)
 		.post(messageBoard.post)
+	app.route('/messageBoard/:postId')
 		.get(messageBoard.show)
 		.put(messageBoard.update);
-
 
 	app.param('postId', messageBoard.postById);
 };
