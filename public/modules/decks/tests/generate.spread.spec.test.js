@@ -2,8 +2,6 @@ describe('Spread Tests', function()
 {
 	var decks = element.all(by.repeater('deck in decks'));
 	var inSpread = element.all(by.repeater('image in cardsInSpread'));
-	
-
 
 	beforeEach(function(){
 		browser.get('#!/generate');
@@ -15,10 +13,9 @@ describe('Spread Tests', function()
 			var toggleOn = deck.element(by.id('toggleOn'));
 
 			toggleOn.click();
-
-			expect(decks.count()).toEqual(inSpread.count());
 		});
 
+		expect(decks.count()).toEqual(inSpread.count());
 	});
 
 	it('should add then remove all decks from the spread', function(){
