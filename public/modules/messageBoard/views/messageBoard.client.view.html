@@ -4,7 +4,7 @@
     </div>
       <div class="col-md-3" id="messages">
           <div id="posts" data-ng-repeat="post in posts">
-            <button ng-click="findOne(post._id, 'displayMessage')" id="messageButton" ng-href="#displayMessage">
+            <button ng-click="findOne(post._id)" id="messageButton" ng-href="#displayMessage">
             <div>
               <a ng-show="post.link" href="{{post.link}}">
                 <b>
@@ -31,6 +31,7 @@
             </div>  
           </div>
           </button>
+          <button id="delete"class="btn btn-danger" onclick="deletePost(post._id)" roll="button">Delete Post</button>
       </div>
       <div id="displayMessage" class="col-md-7">
           <h2 ng-hide="title"id="title"ng-bind="post.title">{{post.title}}</h2><br><br>
@@ -55,7 +56,7 @@
             ng-model="link"></input>
           </div>
           <textarea id="input" type="text" ng-model="content" style="height:125px"></textarea>
-          <button type="submit" class="btn btn-danger">Post</button>
+          <button type="submit" class="btn btn-info">Post</button>
         </form>
       </div>
         <style>
@@ -104,6 +105,10 @@
           }
           #title{
             text-align: center;
+          }
+          #delete{
+            position: relative;
+
           }
         </style>
   </section>

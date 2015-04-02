@@ -41,16 +41,14 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 				$scope.error = err.data.message;
 			});
 	};
-	$scope.getPost = function(idNum){
-
-	};
 	/*
-	$scope.showMessage = function(){
-		var post = $scope.getPost(id-1);
-		alert(post.title);
-		document.getElementById('content').innerHTML = $scope.post.content;
-		document.getElementById('title').innerHTML = $scope.post.title;
-		document.getElementById('link').innerHTML = $scope.post.link;
+	$scope.deletePost = function(postId){
+			postId.$remove(function()
+			{
+				var index = $scope.posts.indexOf(postId);
+				$scope.postId.splice(index, 1);
+			});
+		};
 	};
 	*/
 	$scope.find = function()
@@ -58,12 +56,11 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 			$scope.posts = messageBoardService.query();
 		};
 
-	$scope.findOne = function(id, boxId)
+	$scope.findOne = function(id)
 		{
 			$scope.post = messageBoardService.get({
 				postId: id
 			});
-			
 		};
 
 	}
