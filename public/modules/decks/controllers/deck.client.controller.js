@@ -164,8 +164,8 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 			var i = 0;
 			if ($scope.randomize)
 			{
-				for (i = 0; i !== $scope.decks.length; ++i)	{
-					$scope.decks[i].inSpread = false;
+				for (i = 0; i !== $scope.filteredDecks.length; ++i)	{
+					$scope.filteredDecks[i].inSpread = false;
 				}
 
 				$scope.randomizeDecks();
@@ -215,8 +215,8 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 				var i = 0;
 				for (i = 0; i !== $scope.randomCardAmt; ++i)	
 				{
-					var randomDeckIndex = Math.floor(Math.random() * $scope.decks.length);
-					var selectedDeck = $scope.decks[randomDeckIndex];
+					var randomDeckIndex = Math.floor(Math.random() * $scope.filteredDecks.length);
+					var selectedDeck = $scope.filteredDecks[randomDeckIndex];
 
 					var randomImageIndex = Math.floor(Math.random() * selectedDeck.images.length);
 					var selectedImage = selectedDeck.images[randomImageIndex];
