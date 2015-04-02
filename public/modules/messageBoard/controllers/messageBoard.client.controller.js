@@ -22,8 +22,8 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 	  $scope.link = '';
 	 */
 		var post = new messageBoardService({
-			title: this.name,
-			content: this.description,
+			title: this.title,
+			content: this.content,
 			link: this.link
 		});
 
@@ -58,11 +58,12 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 			$scope.posts = messageBoardService.query();
 		};
 
-	$scope.findOne = function()
+	$scope.findOne = function(id, boxId)
 		{
 			$scope.post = messageBoardService.get({
-				postId: $stateParams.postId
+				postId: id
 			});
+			
 		};
 
 	}
