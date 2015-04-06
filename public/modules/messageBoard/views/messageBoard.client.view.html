@@ -22,9 +22,6 @@
               </span>
             </div>
             <div>
-              <a ng-show="post.link" href="{{post.link}}">
-                {{post.content}}
-              </a>
               <span ng-hide="post.link">
                 {{post.content}}
               </span>
@@ -33,11 +30,21 @@
           </button>
           <button id="delete"class="btn btn-danger" onclick="deletePost(post._id)" roll="button">Delete Post</button>
       </div>
-      <div id="displayMessage" class="col-md-7">
-          <h2 ng-hide="title"id="title"ng-bind="post.title">{{post.title}}</h2><br><br>
-          <span ng-hide="content"id="content" ng-bind="post.content">
-            {{post.content}}
-          </span>
+      <div id="messageAndComments">
+        <div id="displayMessage" class="col-md-7">
+            <a ng-show="post.link" href="{{post.link}}">
+              <h2 ng-hide="title"id="title"ng-bind="post.title">{{post.title}}</h2><br><br>
+            </a>
+            <span ng-hide="post.link">
+                      <h2 ng-hide="title"id="title"ng-bind="post.title">{{post.title}}</h2><br><br>
+            </span>
+            <span ng-hide="content"id="content" ng-bind="post.content">
+              {{post.content}}
+            </span>
+        </div>
+        <div id="comments">
+          
+        </div>
       </div>
       <div class="col-md-0 col-md-offset-10">
         <form ng-submit="addPost()"style="margin-top:30px;">
@@ -90,7 +97,6 @@
               height:100%;
               display: inline-block;
               overflow: auto;
-
           }
           #displayMessage{
               margin-left:3%;
@@ -103,12 +109,14 @@
               box-shadow: 5px 5px 5px #888888;
               word-wrap: break-word;
           }
+          #messageAndComments{
+            
+          }
           #title{
             text-align: center;
           }
           #delete{
             position: relative;
-
           }
         </style>
   </section>
