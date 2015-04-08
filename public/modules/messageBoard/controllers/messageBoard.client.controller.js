@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('messageBoard').controller('messageController', ['$scope', '$location', 'messageBoardService',
-	function($scope, $location, messageBoardService)
+angular.module('messageBoard').controller('messageController', ['$scope', '$location', '$state', 'messageBoardService',
+	function($scope, $location, $state, messageBoardService)
 	{
 	$scope.posts = [];
 	$scope.content = '';
@@ -29,28 +29,27 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 
 			post.$save(function(res)
 			{
-				//$location.path('messageBoard/' + res._id);
-
 				$scope.title = '';
 				$scope.content = '';
 				$scope.link='';
 				$scope.comments = '';
+
+				$state.reload();
 			},
 			function(err)
 			{
 				$scope.error = err.data.message;
 			});
 	};
-	/*
-	$scope.deletePost = function(postId){
-			postId.$remove(function()
-			{
-				var index = $scope.posts.indexOf(postId);
-				$scope.postId.splice(index, 1);
-			});
-		};
+	$scope.deletePost = function(post){
+		post.$remove(function()
+		{
+			var index = $scope.posts.indexOf(post);
+			$scope.posts.splice(index, 1);
+
+			$state.reload();
+		});
 	};
-	*/
 	$scope.find = function()
 		{
 			$scope.posts = messageBoardService.query();
