@@ -17,8 +17,8 @@
 								<center>
 								<div class="input-group">
 									<button type="button" id="toggleOn" class="btn btn-info"  ng-hide="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
-									<button type="button" id="toggleOff" class="btn btn-primary" ng-show="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button> 
-								</div>
+									<button type="button" id="toggleOff" class="btn btn-primary" ng-show="deck.inSpread" ng-click="onDeckClick(deck)" btn-checkbox>{{deck.name}}</button>
+								</div>								
 								</center>
 						</div>
 					</div>
@@ -65,6 +65,20 @@
 							</span>
 							<input type="text" class="form-control" ng-show="randomize" ng-model="randomCardAmt" placeholder="Card Amount">
 						</div>
+						
+						<div ng-repeat="deck in decks" >
+							<div ng-show="deck.inSpread">
+								<span class="label label-primary">{{deck.name}}</span>
+								<div class="input-group input-group-sm" style="margin-bottom: 25px" >
+										<span class="input-group-btn">
+											<button class="btn btn-default" type="button" ng-click="onPlus()"><i class="glyphicon glyphicon-plus"></i></button>
+											<button class="btn btn-default" type="button" ng-click="onMinus()"><i class="glyphicon glyphicon-minus"></i></button>
+										</span>
+										<input type="text" class="form-control" ng-model="cardsPerThisDeck" placeholder="#Cards" >
+								</div>
+							</div>
+						</div>
+						
 						<span class="input-group-btn">
 							<center>
 								<button class="btn btn-default" type="submit">Refresh</button>
