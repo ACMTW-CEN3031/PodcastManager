@@ -71,10 +71,9 @@
 								<span class="label label-primary">{{deck.name}}</span>
 								<div class="input-group input-group-sm" style="margin-bottom: 25px" >
 										<span class="input-group-btn">
-											<button class="btn btn-default" type="button" ng-click="onPlus()"><i class="glyphicon glyphicon-plus"></i></button>
-											<button class="btn btn-default" type="button" ng-click="onMinus()"><i class="glyphicon glyphicon-minus"></i></button>
+											<button class="btn btn-default" type="button" ng-click="RandomClick()"><i class="glyphicon glyphicon-random"></i></button>
 										</span>
-										<input type="text" class="form-control" ng-model="cardsPerThisDeck" placeholder="#Cards" >
+										<input type="number" class="form-control" ng-model="NumbOfCards" placeholder="# Cards">
 								</div>
 							</div>
 						</div>
@@ -90,5 +89,5 @@
 			</div>
 		</div>
 	</div>
-
+	
 </section>
