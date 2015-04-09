@@ -43,13 +43,14 @@
               {{post.content}}
             </span>
         </div>
-        <div id="comments">
-            <div id="commentBox">
-              <span>
+        <div id="commentContainer">
+          <div id="comments" ng-bind="post.comment" data-ng-repeat="comment in post.comments">
+            {{post.comment}}
+          </div>
+            <div id="commentPostBox">
                 <h3>Comment:</h3>
-                <textarea id="commentText" placeholder="comment"></textarea>
-                <button type="button" id="share" class="btn btn-info">Share</button>
-              </span>
+                <textarea id="commentText" placeholder="comment" ng-model="comment"></textarea>
+                <button type="button" id="share" class="btn btn-info" ng-click="addComment(post, commentText)">Share</button>
             </div>
         </div>
         <button id="delete"class="btn btn-danger" ng-click="deletePost(post)" role="button">Delete Post</button>
@@ -123,17 +124,21 @@
               margin-left:2%;
               width:58%;
           }
-          #comments{
+          #commentContainer{
               display:inline-block;
               margin-top:1%;
               margin-left:5%;
           }
-          #commentBox{
+          #commentPostBox{
               display:inline-block;
               position:relative;
           }
+          #comments{
+              margin-top:1%;
+              margin-bottom:1%;
+              background-color:#E8E8E8;
+          }
           #share{
-              margin-left:1%;
               margin-bottom:4%;
           }
           #commentText{

@@ -7,7 +7,6 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 	$scope.content = '';
 	$scope.title = '';
 	$scope.link = '';
-	$scope.comments = ' ';
 	$scope.addPost = function(){
 	/*
 	  if(!$scope.title || $scope.title === '') { return; }
@@ -49,6 +48,17 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 
 			$state.reload();
 		});
+	};
+	$scope.addComment = function(post, comment){
+		post.comments.push(comment);
+		post.$update(function(res)
+			{
+
+			},
+			function(err)
+			{
+				$scope.error = err.data.message;
+			});	
 	};
 	$scope.find = function()
 		{
