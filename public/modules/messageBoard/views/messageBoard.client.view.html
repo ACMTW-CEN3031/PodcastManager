@@ -44,13 +44,13 @@
             </span>
         </div>
         <div id="commentContainer">
-          <div id="comments" ng-bind="post.comment" data-ng-repeat="comment in post.comments">
-            {{post.comment}}
+          <div id="comments" data-ng-repeat="comment in post.comments">
+            {{comment}}
           </div>
             <div id="commentPostBox">
                 <h3>Comment:</h3>
-                <textarea id="commentText" placeholder="comment" ng-model="comment"></textarea>
-                <button type="button" id="share" class="btn btn-info" ng-click="addComment(post, commentText)">Share</button>
+                <textarea id="commentText" placeholder="comment" data-ng-model="commentText"></textarea>
+                <button type="button" id="share" class="btn btn-info" ng-click="addComment(post)">Share</button>
             </div>
         </div>
         <button id="delete"class="btn btn-danger" ng-click="deletePost(post)" role="button">Delete Post</button>

@@ -28,11 +28,6 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 
 			post.$save(function(res)
 			{
-				$scope.title = '';
-				$scope.content = '';
-				$scope.link='';
-				$scope.comments = '';
-
 				$state.reload();
 			},
 			function(err)
@@ -49,11 +44,11 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 			$state.reload();
 		});
 	};
-	$scope.addComment = function(post, comment){
-		post.comments.push(comment);
+	$scope.addComment = function(post){
+		post.comments.push($scope.commentText);
 		post.$update(function(res)
 			{
-
+				$state.reload();
 			},
 			function(err)
 			{
@@ -70,6 +65,8 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 			$scope.post = messageBoardService.get({
 				postId: id
 			});
+
+			console.log($scope.post);
 		};
 
 	}
