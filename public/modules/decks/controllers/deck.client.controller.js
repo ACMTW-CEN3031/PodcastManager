@@ -144,12 +144,6 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 
 			$scope.updateInSpread();
 		};
-		
-		$scope.onPlusClick = function(deck)
-        {
-			$scope.NumbOfCards = parseInt($scope.NumbOfCards);
-			$scope.NumbOfCards++;
-		};
 
 		$scope.onRandomClick = function()
 		{
