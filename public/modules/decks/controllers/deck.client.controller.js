@@ -181,7 +181,12 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 				{
 					var deck = $scope.filteredDecks[i];
 					var j = 0;
-					for (j = 0; j !== $scope.cardsPerDeck; ++j)
+
+					var count = deck.cardCount;
+					if (count == undefined)
+						continue;
+
+					for (j = 0; j !== count; ++j)
 					{
 						var randomIndex = Math.floor(Math.random() * deck.images.length);
 						var selectedImage = deck.images[randomIndex];
