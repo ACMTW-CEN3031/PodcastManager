@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('messageBoard').controller('messageController', ['$scope', '$location', '$state', 'messageBoardService',
-	function($scope, $location, $state, messageBoardService)
+angular.module('messageBoard').controller('messageController', ['$scope', '$location', '$state', 'messageBoardService', 'Authentication',
+	function($scope, $location, $state, messageBoardService, Authentication)
 	{
+	$scope.user = Authentication.user;
 	$scope.posts = [];
 	$scope.content = '';
 	$scope.title = '';
@@ -23,7 +24,8 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 		var post = new messageBoardService({
 			title: this.title,
 			content: this.content,
-			link: this.link
+			link: this.link,
+			userName: this.user.username
 		});
 
 			post.$save(function(res)

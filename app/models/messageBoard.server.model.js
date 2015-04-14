@@ -19,6 +19,11 @@ var MessageBoardSchema = new Schema({
 		type: String,
 		default: ''
 	},
+	userName:
+	{
+		type: String,
+		default: ''
+	},
 	comments:
 	{
 		type: [String],

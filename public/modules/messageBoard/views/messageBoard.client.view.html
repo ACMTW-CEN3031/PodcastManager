@@ -25,7 +25,10 @@
                 <div>
                   <span ng-hide="p.link">
                     {{p.content}}
-                  </span>
+                  </span><br>
+                  <div id="userName">
+                    {{p.userName}}
+                  </div>
                 </div>  
               </div>
             </button>
@@ -33,6 +36,9 @@
       </div>
       <div id="messageAndComments" class="col-md-7 col-md-offset-3">
         <div id="displayMessage" class="col-md-7">
+            <div id="displayUser">
+                {{post.userName}}
+            </div>
             <a ng-show="post.link" href="{{post.link}}">
               <h2 ng-hide="title"id="title"ng-bind="post.title">{{post.title}}</h2><br><br>
             </a>
@@ -151,6 +157,18 @@
             position: relative;
             margin-top: 8%;
             margin-left: 30%;
+          }
+          #userName{
+            text-align: left;
+            color: green;
+            font-style: italic;
+            font-size: 10px;
+            position: left;
+          }
+          #displayUser{
+            color: green;
+            font-size: 12px;
+            font-style: italic;
           }
         </style>
   </section>
