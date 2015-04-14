@@ -48,18 +48,18 @@
 				</div>
 				<div class="panel-body">							
 					<form class="form-horizontal" role="form" ng-submit="onRefreshClick()">
+					
+						<h4 ng-hide="randomize">Draw cards</h4>
+						<h6 ng-hide="randomize">Select a deck and choose how many cards you would like to draw from each deck</h6>
 						<h4 ng-show="randomize">Randomize</h4>
 
-						<div class="input-group" style="margin-bottom: 25px" >
-							<button class="btn btn-default" ng-hide="randomize" ng-click="onRandomClick()" btn-checkbox>
-								Randomize <i class="glyphicon glyphicon-random"></i>
-							</button>
+						<div class="input-group" ng-show="randomize" style="margin-bottom: 25px" >
 							<span class="input-group-btn">
-								<button class="btn btn-primary" ng-show="randomize" ng-click="onRandomClick()" btn-checkbox>
+								<button class="btn btn-primary" ng-click="onRandomClick()" btn-checkbox>
 									<i class="glyphicon glyphicon-random"></i>
 								</button>
 							</span>
-							<input type="text" class="form-control" ng-show="randomize" ng-model="randomCardAmt" placeholder="Card Amount">
+							<input type="text" class="form-control" ng-model="randomCardAmt" placeholder="Card Amount">
 						</div>
 						
 						<h6 ng-show="randomize">Draws random cards from all selected decks. Press the <i class="glyphicon glyphicon-random"></i> to switch back</h6>
@@ -73,11 +73,19 @@
 							</div>
 						</div>
 						
-						<span class="input-group-btn">
+						<span class="input-group-btn"  style="margin-bottom: 25px">
 							<center>
 								<button class="btn btn-default" type="submit">Refresh</button>
 							</center>
 						</span>
+						
+						<div class="input-group" style="margin-top: 25px" >
+							<center>
+							<button class="btn btn-default" ng-hide="randomize" ng-click="onRandomClick()" btn-checkbox>
+								Randomize <i class="glyphicon glyphicon-random"></i>
+							</button>
+							</center>
+						</div>
 					</form>
 
 				</div>
