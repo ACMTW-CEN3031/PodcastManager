@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 exports.post = function(req, res)
 {
 	var post = new messageBoard(req.body);
+	post.created = Date.now();
 
 	post.save(function(err)
 	{
