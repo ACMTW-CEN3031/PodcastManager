@@ -9,6 +9,8 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$stat
 	$scope.content = '';
 	$scope.title = '';
 	$scope.link = '';
+	$scope.profileLink= "#!/users/:" + user._id;
+	console.log($scope.profileLink);
 	$scope.addPost = function(){
 	/*
 	  if(!$scope.title || $scope.title === '') { return; }
@@ -22,6 +24,12 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$stat
 	  $scope.title = '';
 	  $scope.link = '';
 	 */
+	 	if ($scope.new_title == undefined || $scope.new_content == undefined)
+	 	{
+	 		$scope.error = "Post cannot be blank.";
+	 		return;
+	 	}
+
 		var post = new messageBoardService({
 			title: this.new_title,
 			content: this.new_content,

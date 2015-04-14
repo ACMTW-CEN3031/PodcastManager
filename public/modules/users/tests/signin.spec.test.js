@@ -7,12 +7,14 @@ describe('Authentication capabilities', function() {
   var error = element(by.binding('error'));
 
   it('should redirect to the login page if trying to load protected page while not authenticated', function() {
-    browser.get('/#!/signin');
-    loginURL = browser.getCurrentUrl();
+      browser.get('/#!/signin');
+      loginURL = browser.getCurrentUrl();
 
-    browser.get('/#!/signin');
-    expect(browser.getCurrentUrl()).toEqual(loginURL);
-  });
+      email.sendKeys('wrongtest');
+      password.sendKeys('wrongtest');
+      loginButton.click();
+      expect(browser.getCurrentUrl()).toEqual(loginURL);
+   });
 
   it('should warn on missing/malformed credentials', function() {
     email.clear();
@@ -25,8 +27,9 @@ describe('Authentication capabilities', function() {
     email.sendKeys('wrongtest');
     loginButton.click();
     expect(error.getText()).toMatch('Unknown user');
+    email.clear();
 
-    email.sendKeys('test');
+    email.sendKeys('testtest');
     password.clear();
     loginButton.click();
     expect(error.getText()).toMatch('Missing credentials');
@@ -36,7 +39,9 @@ describe('Authentication capabilities', function() {
   it('should accept a valid email address and password', function() {
     browser.get('/#!/signin');
 
-    email.sendKeys('test');
+    email.clear();
+    password.clear();
+    email.sendKeys('testtest');
     password.sendKeys('testtest');
     loginButton.click();
     expect(browser.getCurrentUrl()).not.toEqual(loginURL);
@@ -50,7 +55,7 @@ describe('Authentication capabilities', function() {
     expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/');
     browser.get('/#!/signin');
 
-    email.sendKeys('test');
+    email.sendKeys('testtest');
     password.sendKeys('testtest');
     loginButton.click();
   });
