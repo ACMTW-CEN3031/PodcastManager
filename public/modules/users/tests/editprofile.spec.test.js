@@ -55,20 +55,7 @@ describe('Edit Profile capabilities', function() {
       username.sendKeys('test');
       saveProfile.click();
       expect(success.getText()).toMatch('Profile Saved Successfully');
+
   });
 
-  // it('should not allow save profile with invalid email format', function() {
-  //   email.clear();
-  //   email.sendKeys('cen3031');
-  //   saveProfile.click();
-  //   expect();
-  // });
-
-  // it('should return to the login page after logout', function() {
-  //   var menuDropdown = element(by.binding('authentication.user.displayName'));
-  //   menuDropdown.click();
-  //   var logoutButton = element(by.id('signoutbutton'));
-  //   logoutButton.click();
-  //   expect(browser.getCurrentUrl()).toEqual('http://localhost:3000/#!/');
-  // });
 });
