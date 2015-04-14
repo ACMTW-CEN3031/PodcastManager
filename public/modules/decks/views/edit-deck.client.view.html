@@ -20,5 +20,10 @@
 			<p><a id="delete" data-ng-click="removeImage(image)" class="btn btn-danger" role="button">Delete</a></p>
 		</div>
 	</div>
+	
+	<label class="control-label" for="description">Edit deck description:</label>
+	<p data-ng-bind="deck.description || 'This deck has no description'"></p>
+	<textarea rows="4" cols="50" name="description" type="text" data-ng-model="description" id="description"></textarea>
+	<p><a id="editDesc" data-ng-click="editDesc(description)" class="btn btn-primary" role="button">Update</a></p>
 
 </section>

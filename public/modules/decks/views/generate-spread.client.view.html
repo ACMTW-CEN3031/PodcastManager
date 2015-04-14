@@ -48,11 +48,7 @@
 				</div>
 				<div class="panel-body">							
 					<form class="form-horizontal" role="form" ng-submit="onRefreshClick()">
-						<h4>Cards Per Deck</h4>
-						<div class="input-group" style="margin-bottom: 25px" >
-								<span class="input-group-addon"><i class="glyphicon glyphicon-th-large"></i></span>
-								<input type="text" class="form-control" ng-model="cardsPerDeck" placeholder="Cards / Deck">
-						</div>
+						<h4 ng-show="randomize">Randomize</h4>
 
 						<div class="input-group" style="margin-bottom: 25px" >
 							<button class="btn btn-default" ng-hide="randomize" ng-click="onRandomClick()" btn-checkbox>
@@ -66,14 +62,13 @@
 							<input type="text" class="form-control" ng-show="randomize" ng-model="randomCardAmt" placeholder="Card Amount">
 						</div>
 						
+						<h6 ng-show="randomize">Draws random cards from all selected decks. Press the <i class="glyphicon glyphicon-random"></i> to switch back</h6>
+						
 						<div ng-repeat="deck in decks" >
 							<div ng-show="deck.inSpread">
-								<span class="label label-primary">{{deck.name}}</span>
+								<span class="label label-primary" ng-hide="randomize">{{deck.name}}</span>
 								<div class="input-group input-group-sm" style="margin-bottom: 25px" >
-										<span class="input-group-btn">
-											<button class="btn btn-default" type="button" ng-click="RandomClick()"><i class="glyphicon glyphicon-random"></i></button>
-										</span>
-										<input type="number" class="form-control" ng-model="deck.cardCount" data-ng-init="deck.cardCount=0" min="0">
+										<input type="number" class="form-control" ng-model="deck.cardCount" ng-hide="randomize" data-ng-init="deck.cardCount=0" min="0">
 								</div>
 							</div>
 						</div>
