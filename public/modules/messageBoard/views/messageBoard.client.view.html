@@ -7,13 +7,13 @@
             <div id="posts" data-ng-repeat="p in posts">
               <button ng-click="findOne(p._id)" id="messageButton" ng-href="#displayMessage">
                 <div>
-                  <a ng-show="p.link" href="{{p.link}}">
+                  <span ng-hide="!p.link" style="color: rgb(51, 122, 183);">
                     <b>
                       <h4>
                         {{p.title}}
                       </h4>
                     </b>
-                  </a>
+                  </span>
                   <span ng-hide="p.link">
                     <b>
                       <h4>
