@@ -22,6 +22,12 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$stat
 	  $scope.title = '';
 	  $scope.link = '';
 	 */
+	 	if ($scope.new_title == undefined || $scope.new_content == undefined)
+	 	{
+	 		$scope.error = "Post cannot be blank.";
+	 		return;
+	 	}
+
 		var post = new messageBoardService({
 			title: this.new_title,
 			content: this.new_content,

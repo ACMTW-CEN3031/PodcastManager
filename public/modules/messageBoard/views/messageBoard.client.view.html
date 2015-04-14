@@ -79,6 +79,9 @@
           </div>
           <textarea id="input" type="text" ng-model="new_content" style="height:125px"></textarea>
           <button type="submit" class="btn btn-info">Post</button>
+          <div data-ng-show="error" class="text-danger">
+            <strong data-ng-bind="error"></strong>
+          </div>
         </form>
       </div>
         <style>
