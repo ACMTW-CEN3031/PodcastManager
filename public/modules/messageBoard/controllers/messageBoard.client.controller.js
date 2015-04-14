@@ -9,6 +9,8 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$stat
 	$scope.content = '';
 	$scope.title = '';
 	$scope.link = '';
+	$scope.profileLink= "#!/users/:" + user._id;
+	console.log($scope.profileLink);
 	$scope.addPost = function(){
 	/*
 	  if(!$scope.title || $scope.title === '') { return; }
