@@ -28,6 +28,10 @@ var MessageBoardSchema = new Schema({
 	{
 		type: [String],
 		default: ''
+	},
+	created:
+	{
+		type: Date
 	}
 });
 
