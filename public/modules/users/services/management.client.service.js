@@ -9,7 +9,11 @@ angular.module('users').factory('ManagementService', ['$resource',
 			mUser: 0
 		},
 		{
-			update: {method: 'PUT' },
+			update: {
+				method: 'PUT',
+                url: 'users/:userId',
+                params: {userId: '@_id'}
+				 },
 			remove: {
                 method: 'DELETE',
                 url: 'users/:userId',

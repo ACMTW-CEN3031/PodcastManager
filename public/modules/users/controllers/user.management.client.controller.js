@@ -5,6 +5,7 @@ angular.module('users').controller('userManagement', ['$scope', '$stateParams','
 	{
 
 		$scope.mId = 0;
+		$scope.roles = [['user'], ['teacher'], ['admin']];
 
 		$scope.findOne = function()
 		{
@@ -20,6 +21,17 @@ angular.module('users').controller('userManagement', ['$scope', '$stateParams','
 		{
 			$scope.users = ManagementService.query();
 		};
+
+		$scope.$on('$locationChangeStart', function( event ) {
+			for (var mUser in $scope.users){
+				$scope.users[mUser].$update(function(response) {
+					console.log('Saved user' + $scope.users[mUser].displayName);
+					$scope.success = true;
+				}, function(response) {
+					$scope.error = response.data.message;
+				});
+			}
+		});
 
 		$scope.remove = function(mUser)
 		{

@@ -40,7 +40,7 @@ exports.delete = function(req, res)
 	return User.findById(req.params.userId, function(err, mUser){
 		return mUser.remove(function(err){
 			if (!err) {
-				console.log("removed");
+				console.log('removed');
 			    return res.send('');
 			} else {
 			    console.log(err);
