@@ -13,7 +13,7 @@ angular.module('users').factory('ManagementService', ['$resource',
 			remove: {
                 method: 'DELETE',
                 url: 'users/:userId',
-                params: {id: '@_id'}
+                params: {userId: '@_id'}
             }
 		});
 	}

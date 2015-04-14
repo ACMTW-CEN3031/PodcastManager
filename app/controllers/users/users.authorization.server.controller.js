@@ -37,7 +37,17 @@ exports.requiresLogin = function(req, res, next) {
 
 exports.delete = function(req, res)
 {
-	var user = req.user;
+	return User.findById(req.params.userId, function(err, mUser){
+		return mUser.remove(function(err){
+			if (!err) {
+				console.log("removed");
+			    return res.send('');
+			} else {
+			    console.log(err);
+			}
+  		});
+	});
+	/*var user = req.user;
 
 	user.remove(function(err)
 	{
@@ -51,7 +61,7 @@ exports.delete = function(req, res)
 		{
 			res.json(user);
 		}
-	});
+	});*/
 };
 
 
@@ -62,7 +72,7 @@ exports.show = function(req, res)
 
 exports.list = function(req, res)
 {
-	User.find().sort('name').exec(function(err, users)
+	User.find().sort('displayName').exec(function(err, users)
 	{
 		if (err)
 		{

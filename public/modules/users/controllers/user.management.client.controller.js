@@ -13,25 +13,25 @@ angular.module('users').controller('userManagement', ['$scope', '$stateParams','
 
 		$scope.viewUser = function(mUser){
 			ManagementService.mUser = mUser;
-			$location.path("/users/:" + mUser._id);
-		}
+			$location.path('/users/:' + mUser._id);
+		};
 
 		$scope.find = function()
 		{
 			$scope.users = ManagementService.query();
 		};
 
-		$scope.remove = function(user)
+		$scope.remove = function(mUser)
 		{
-			if (user){
-				user.$remove();
-
-				for (var i in $scope.users) {
-	                if ($scope.users[i] === user) {
-	                    $scope.users.splice(i, 1); // remove item from scope
-	                }
-	            }
-
+			if (mUser){
+				mUser.$remove(function()
+				{
+					for (var i in $scope.users) {
+		                if ($scope.users[i] === mUser) {
+		                    $scope.users.splice(i, 1); // remove item from scope
+		                }
+		            }
+				});
             }
 		};
 	}
