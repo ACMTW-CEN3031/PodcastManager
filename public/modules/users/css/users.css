@@ -12,3 +12,22 @@
 	right: 10px;
 	position: absolute;
 }
+body {
+	background-image: url("http://www.iriwv.com/wp/assets/red-background-and-photo-high-resolution-download.jpg");
+}
+
+h3 {
+    color: white;
+}
+
+label {
+	color: white;
+}
+
+h1 {
+	color: white;
+}
+
+p {
+	color: white;
+}
