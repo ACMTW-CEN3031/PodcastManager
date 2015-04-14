@@ -29,6 +29,13 @@ angular.module('decks').controller('DeckController', ['$scope', '$stateParams', 
 				$scope.error = err.data.message;
 			});
 		};
+		
+		$scope.editDesc = function(description)
+		{
+			var deck = $scope.deck;
+			deck.description = $scope.description;
+			deck.$update();
+		};
 
 		$scope.remove = function(deck)
 		{
