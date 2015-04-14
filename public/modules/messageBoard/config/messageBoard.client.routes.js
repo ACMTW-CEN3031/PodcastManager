@@ -6,7 +6,7 @@ angular.module('messageBoard').config(['$stateProvider',
 		$stateProvider.
 		state('messageBoard',
 		{
-			url: '/messageBoard',
+			url: '/messageBoard?postId',
 			templateUrl: 'modules/messageBoard/views/messageBoard.client.view.html',
 			controller: 'messageController'
 		});

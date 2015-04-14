@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('messageBoard').controller('messageController', ['$scope', '$location', '$state', 'messageBoardService',
-	function($scope, $location, $state, messageBoardService)
+angular.module('messageBoard').controller('messageController', ['$scope', '$location', '$state', '$stateParams', 'messageBoardService',
+	function($scope, $location, $state, $stateParams, messageBoardService)
 	{
 	$scope.posts = [];
 	$scope.content = '';
@@ -21,14 +21,14 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 	  $scope.link = '';
 	 */
 		var post = new messageBoardService({
-			title: this.title,
-			content: this.content,
-			link: this.link
+			title: this.new_title,
+			content: this.new_content,
+			link: this.new_link
 		});
 
 			post.$save(function(res)
 			{
-				$state.reload();
+				$location.path('messageBoard').search({ postId: post._id });
 			},
 			function(err)
 			{
@@ -48,7 +48,7 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 		post.comments.push($scope.commentText);
 		post.$update(function(res)
 			{
-				$state.reload();
+				//
 			},
 			function(err)
 			{
@@ -57,7 +57,13 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 	};
 	$scope.find = function()
 		{
-			$scope.posts = messageBoardService.query();
+			$scope.posts = messageBoardService.query(function()
+			{
+				if ($stateParams.postId)
+					$scope.findOne($stateParams.postId);
+				else
+					$scope.post = $scope.posts[0];
+			});
 		};
 
 	$scope.findOne = function(id)
@@ -65,8 +71,6 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$loca
 			$scope.post = messageBoardService.get({
 				postId: id
 			});
-
-			console.log($scope.post);
 		};
 
 	}
