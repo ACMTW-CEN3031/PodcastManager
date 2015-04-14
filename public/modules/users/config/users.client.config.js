@@ -28,3 +28,10 @@ angular.module('users').config(['$httpProvider',
 		]);
 	}
 ]);
+
+angular.module('users').run(['Menus',
+	function(Menus){
+		Menus.addMenuItem('topbar', 'Users', 'users', 'dropdown');
+		Menus.addSubMenuItem('topbar', 'users', 'Manage Users', 'manage');
+	}
+]);

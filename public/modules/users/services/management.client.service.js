@@ -5,10 +5,16 @@ angular.module('users').factory('ManagementService', ['$resource',
 	{
 		return $resource('users/:userId',
 		{
-			userId: '@_id'
+			userId: '@_id',
+			mUser: 0
 		},
 		{
-			update: {method: 'PUT' }
+			update: {method: 'PUT' },
+			remove: {
+                method: 'DELETE',
+                url: 'users/:userId',
+                params: {id: '@_id'}
+            }
 		});
 	}
 ]);

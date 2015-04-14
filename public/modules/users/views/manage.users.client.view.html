@@ -4,30 +4,17 @@
 		<h1>View all Users</h1>
 	</div>
 
-		<div class="col-sm-6 col-md-4">
-			<div class="thumbnail">
-				<img data-ng-src="http://i.imgur.com/Vd09tNY.png" style="width:auto; height:200px">
-			</div>
-
-			<h3><a data-ng-href="#!/">Michael Cohen</a></h3>
-			<p>sample@gmail.com</p>
-			<p>
-				<a id="delete" class="btn btn-danger" role="button">Delete</a>
-			</p>
-		</div>
-	</div>
-
-	<div data-ng-repeat="user in users">
+	<div data-ng-repeat="mUser in users">
 
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
 				<div class="thumbnail">
-				<img data-ng-src="http://i.imgur.com/{{user.thumbnail}}"  style="width:auto;height:200px">
+				<img data-ng-src="http://i.imgur.com/{{mUser.thumbnail}}"  style="width:auto;height:200px">
 				</div>
-			<h3><a data-ng-href="#!/users/{{user._id}}" data-ng-bind="user.displayName"></a></h3>
-			<p data-ng-bind="user.email || 'sample@email.com'"></p>
+			<h3><a ng-click="viewUser(mUser)" data-ng-bind="mUser.displayName"></a></h3>
+			<p data-ng-bind="mUser.email || 'sample@email.com'"></p>
 			<p>
-				<a id="delete" data-ng-click="remove(user)" class="btn btn-primary" role="button">Delete</a>
+				<a id="delete" data-ng-click="remove(mUser)" class="btn btn-primary" role="button">Delete</a>
 			</p>
 	</div>
 

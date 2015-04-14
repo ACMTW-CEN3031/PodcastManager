@@ -5,6 +5,7 @@
  */
 var _ = require('lodash'),
 	mongoose = require('mongoose'),
+	errorHandler = require('../errors.server.controller'),
 	User = mongoose.model('User');
 
 /**
@@ -32,6 +33,48 @@ exports.requiresLogin = function(req, res, next) {
 	}
 
 	next();
+};
+
+exports.delete = function(req, res)
+{
+	var user = req.user;
+
+	user.remove(function(err)
+	{
+		if (err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			res.json(user);
+		}
+	});
+};
+
+
+exports.show = function(req, res)
+{
+	res.json(req.user);
+};
+
+exports.list = function(req, res)
+{
+	User.find().sort('name').exec(function(err, users)
+	{
+		if (err)
+		{
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		}
+		else
+		{
+			res.json(users);
+		}
+	});
 };
 
 /**
