@@ -34,6 +34,14 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+			<a href="/#!/settings/profile" id="editProf">
+			<span data-ng-if="!authentication.user.thumbnail">
+				<img data-ng-src="https://assets-instamotor.imgix.net/user-icon-silhouette.png" style = "margin-top:-15px width:auto;height:50px">
+			</span>
+			<span data-ng-if="authentication.user.thumbnail">
+				<img data-ng-src="http://i.imgur.com/{{authentication.user.thumbnail}}" style = "margin-top: -15px width:auto;height:50px">
+			</span>
+			</a>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
