@@ -49,11 +49,14 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 
 		$scope.changeRole = function(mUser, role)
 		{
+			/*
 			mUser.roles = [role];
+			console.log(mUser);
 			mUser.$update(function()
 			{
 				$state.reload();
 			});
+			*/
 		}
 	}
 ]);
