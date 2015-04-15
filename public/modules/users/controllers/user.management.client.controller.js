@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('users').controller('userManagement', ['$scope', '$stateParams','$location', 'ManagementService',
-	function($scope, $stateParams, $location, ManagementService)
+angular.module('users').controller('userManagement', ['$scope', '$state', '$stateParams','$location', 'ManagementService',
+	function($scope, $state, $stateParams, $location, ManagementService)
 	{
 
 		$scope.mId = 0;
-		$scope.roles = [['user'], ['teacher'], ['admin']];
+		$scope.roles = ['user', 'teacher', 'admin'];
 
 		$scope.findOne = function()
 		{
@@ -46,5 +46,14 @@ angular.module('users').controller('userManagement', ['$scope', '$stateParams','
 				});
             }
 		};
+
+		$scope.changeRole = function(mUser, role)
+		{
+			mUser.roles = [role];
+			mUser.$update(function()
+			{
+				$state.reload();
+			});
+		}
 	}
 ]);

@@ -17,12 +17,17 @@
 					</div>
 				</div>
 				<h3><a ng-click="viewUser(mUser)" data-ng-bind="mUser.displayName"></a></h3>
-				<p data-ng-bind="mUser.email || 'sample@email.com'"></p>
-				<p>
+				<div data-ng-bind="mUser.email || 'sample@email.com'"></div>
+				<div data-ng-bind="mUser.roles[0]"></div>
+				<br/>
+				<div>
 					<a id="delete" data-ng-click="remove(mUser)" class="btn btn-danger" role="button">Delete</a>
 
-					<a><input type="radio" ng-model="$parent.mUser.roles" ng-repeat="role in roles" ng-value="role" name="roles" >{{mUser.roles}}</a>
-				</p>
+					<select ng-model="selectedRole" ng-change="changeRole(mUser, selectedRole)">
+						<option value="">Change Role:</option>
+						<option ng-repeat="role in roles" ng-value="role">{{role}}</option>
+					</select>
+				<divp>
 		</div>
 	</div>
 
