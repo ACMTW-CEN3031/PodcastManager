@@ -13,12 +13,12 @@ module.exports = function(app) {
 	app.route('/users/me').get(users.me);
 	app.route('/users')
 		.get(users.requiresLogin, users.list)
-		.put(users.update);
+		.put(users.requiresLogin, users.update);
 
 	app.route('/users/:userId')
-		.get(users.show)
-		.put(users.update)
-		.delete(/* users.hasAuthorization(['teacher', 'admin']), */ users.delete);
+		.get(users.requiresLogin, users.show)
+		.put(users.requiresLogin, users.update)
+		.delete(users.requiresLogin, /* users.hasAuthorization(['teacher', 'admin']), */ users.delete);
 
 
 	app.route('/users/accounts').delete(users.removeOAuthProvider);

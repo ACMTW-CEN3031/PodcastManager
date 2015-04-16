@@ -10,14 +10,14 @@ angular.module('users').factory('Authentication', [
 
 			meetsRole: function(role)
 			{
-				return (this.user.roles.indexOf(role) !== -1);
+				return (_this.user.roles.indexOf(role) !== -1);
 			},
 
 			meetsAnyRole: function(roles)
 			{
 				for (var i = 0; i !== roles.length; ++i)
 				{
-					if (this.meetsRole(roles[i]))
+					if (_this.meetsRole(roles[i]))
 						return true;
 				}
 

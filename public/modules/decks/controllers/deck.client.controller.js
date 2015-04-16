@@ -1,11 +1,12 @@
 'use strict';
-angular.module('decks').controller('DeckController', ['$scope', '$stateParams', '$location', '$upload', 'DeckService',
-	function($scope, $stateParams, $location, $upload, DeckService)
+angular.module('decks').controller('DeckController', ['$scope', '$stateParams', '$location', '$upload', 'DeckService', 'Authentication',
+	function($scope, $stateParams, $location, $upload, DeckService, Authentication)
 	{
 		//Used in Spread generation
 		$scope.filteredDecks = [];
 		$scope.cardsInSpread = [];
 		$scope.cardsPerDeck = 1;
+		$scope.user = Authentication.user;
 
 		$scope.randomize = false;
 		$scope.randomCardAmt = 2;

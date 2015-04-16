@@ -1,12 +1,14 @@
 'use strict';
 
-angular.module('users').controller('userManagement', ['$scope', '$state', '$stateParams','$location', 'ManagementService',
-	function($scope, $state, $stateParams, $location, ManagementService)
+angular.module('users').controller('userManagement', ['$scope', '$state', '$stateParams','$location', 'ManagementService', 'Authentication', 'Users',
+	function($scope, $state, $stateParams, $location, ManagementService, Authentication, Users)
 	{
 
 		$scope.mId = 0;
 		$scope.roles = ['user', 'teacher', 'admin'];
 		$scope.showSave = [];
+		$scope.user = Authentication.user;
+
 
 		$scope.findOne = function()
 		{
@@ -25,17 +27,6 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 				$scope.showSave[mUser] = false;
 			}
 		};
-
-		$scope.$on('$locationChangeStart', function( event ) {
-			for (var mUser in $scope.users){
-				$scope.users[mUser].$update(function(response) {
-					console.log('Saved user' + $scope.users[mUser].displayName);
-					$scope.success = true;
-				}, function(response) {
-					$scope.error = response.data.message;
-				});
-			}
-		});
 
 		$scope.remove = function(mUser)
 		{
@@ -60,15 +51,22 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 		}
 		$scope.changeRole = function(mUser, role)
 		{
-			/*
-			mUser.roles = [role];
-			console.log(mUser);
-			mUser.$update(function()
-			{
-				$state.reload();
-			});
-			*/
-			$scope.showSave[mUser] = false;
+			var tUser = new ManagementService(mUser);
+
+			tUser.roles = [role];
+			console.log(tUser);
+			tUser.$update(function(response) {
+					$scope.success = true;
+					Authentication.user = response;
+				}, function(response) {
+					$scope.error = response.data.message;
+				});
+			for (var i in $scope.users){
+				if (mUser === $scope.users[i]){
+					$scope.showSave[i] = false;
+				}
+			}
+			$scope.reload();
 		}
 	}
 ]);
