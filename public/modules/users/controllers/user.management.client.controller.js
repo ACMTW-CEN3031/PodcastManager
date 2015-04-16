@@ -6,6 +6,7 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 
 		$scope.mId = 0;
 		$scope.roles = ['user', 'teacher', 'admin'];
+		$scope.showSave = [];
 
 		$scope.findOne = function()
 		{
@@ -20,6 +21,9 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 		$scope.find = function()
 		{
 			$scope.users = ManagementService.query();
+			for (var mUser in $scope.users){
+				$scope.showSave[mUser] = false;
+			}
 		};
 
 		$scope.$on('$locationChangeStart', function( event ) {
@@ -47,6 +51,13 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
             }
 		};
 
+		$scope.saveVisibility = function(mUser){
+			for (var i in $scope.users){
+				if (mUser === $scope.users[i]){
+					$scope.showSave[i] = true;
+				}
+			}
+		}
 		$scope.changeRole = function(mUser, role)
 		{
 			/*
@@ -57,6 +68,7 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 				$state.reload();
 			});
 			*/
+			$scope.showSave[mUser] = false;
 		}
 	}
 ]);
