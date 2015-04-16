@@ -61,7 +61,7 @@
                 <button type="button" id="share" class="btn btn-info" ng-click="addComment(post)">Share</button>
             </div>
         </div>
-        <button id="delete"class="btn btn-danger" ng-show="user.username == post.userName" ng-click="deletePost(post)" role="button">Delete Post</button>
+        <button id="delete"class="btn btn-danger" ng-show="user.username == post.userName || mUser.roles[0] == admin || mUser.roles[0] == teacher" ng-click="deletePost(post)" role="button">Delete Post</button>
       </div>
       <div class="col-md-0 col-md-offset-10">
         <form ng-submit="addPost()"style="margin-top:30px;">
