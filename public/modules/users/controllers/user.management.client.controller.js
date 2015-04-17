@@ -51,22 +51,26 @@ angular.module('users').controller('userManagement', ['$scope', '$state', '$stat
 		}
 		$scope.changeRole = function(mUser, role)
 		{
-			var tUser = new ManagementService(mUser);
+			var sUser = Users.get({
+				userId: mUser._id
+			});
 
-			tUser.roles = [role];
-			console.log(tUser);
+			sUser.roles = [role];
+			var tUser = new Users(sUser);
+
 			tUser.$update(function(response) {
 					$scope.success = true;
-					Authentication.user = response;
 				}, function(response) {
 					$scope.error = response.data.message;
 				});
+
 			for (var i in $scope.users){
 				if (mUser === $scope.users[i]){
 					$scope.showSave[i] = false;
 				}
 			}
-			$scope.reload();
+
+			$state.reload();
 		}
 	}
 ]);
