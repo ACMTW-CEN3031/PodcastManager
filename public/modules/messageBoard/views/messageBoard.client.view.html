@@ -29,9 +29,10 @@
                   <div id="userName">
                     {{p.userName}}
                   </div>
-                </div>  
+                </div>
+				</button>	
+                <button type="button">Share</button>				
               </div>
-            </button>
         </div>
       </div>
       <div id="messageAndComments" class="col-md-7 col-md-offset-3">
@@ -61,7 +62,6 @@
                 <button type="button" id="share" class="btn btn-info" ng-click="addComment(post)">Share</button>
             </div>
         </div>
-        <button id="delete"class="btn btn-danger" ng-show="user.username == post.userName || user.roles[0] == 'admin' || user.roles[0] == 'teacher'" ng-click="deletePost(post)" role="button">Delete Post</button>
       </div>
       <div class="col-md-0 col-md-offset-10">
         <form ng-submit="addPost()"style="margin-top:30px;">
@@ -81,6 +81,7 @@
           </div>
           <textarea id="input" type="text" ng-model="new_content" style="height:125px"></textarea>
           <button type="submit" class="btn btn-info">Post</button>
+          <button id="delete" class="btn btn-danger" ng-show="user.username == post.userName || user.roles[0] == 'admin' || user.roles[0] == 'teacher'" ng-click="deletePost(post)" role="button">Delete Post</button>
           <div data-ng-show="error" class="text-primary">
             <strong data-ng-bind="error"></strong>
           </div>
