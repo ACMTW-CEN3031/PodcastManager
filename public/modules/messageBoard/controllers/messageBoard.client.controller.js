@@ -56,10 +56,16 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$stat
 		});
 	};
 	$scope.addComment = function(post){
+		if ($scope.commentText == undefined)
+		{
+			$scope.error = "Comment cannot be blank.";
+			return;
+		}
+
 		post.comments.push($scope.commentText);
 		post.$update(function(res)
 			{
-				//
+				$scope.commentText = "";
 			},
 			function(err)
 			{
