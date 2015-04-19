@@ -4,7 +4,7 @@
     </div>
       <div class="col-md-3" id="messageContainer">
         <div class="col-md-3" id="messages">
-            <div id="posts" data-ng-repeat="p in posts">
+            <div id="posts" data-ng-repeat="p in posts | orderBy:'-created'">
               <button ng-click="findOne(p._id)" id="messageButton" ng-href="#displayMessage">
                 <div>
                   <span ng-hide="!p.link" style="color: rgb(51, 122, 183);">
@@ -106,8 +106,12 @@
             width: 250px;
           }
           #messages{
+            background-color: white;
             width: 250px;
             height: 600px;
+            border: 3px solid;  
+            border-color:#686868;    
+            border-radius: 25px;
             text-align: center;
             overflow-y: auto;
           }

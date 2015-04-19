@@ -74,7 +74,7 @@ angular.module('messageBoard').controller('messageController', ['$scope', '$stat
 					$scope.findOne($stateParams.postId);
 				else
 					$scope.post = $scope.posts[0];
-			}).sort('created');
+			});
 		};
 
 	$scope.findOne = function(id)
