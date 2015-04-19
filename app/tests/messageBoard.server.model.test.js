@@ -22,7 +22,7 @@ describe('messageBoard Model unit tests:', function()
 			content: 'content2',
 			link: 'www.google.com',
 			username: 'test2',
-			comments: ['one', 'two'],
+			comments: [],
 			created: ''
 		});
 		done();
@@ -60,6 +60,28 @@ describe('messageBoard Model unit tests:', function()
 			return post1.save(function(err)
 			{
 				should.exist(err);
+				done();
+			});
+		});
+	});
+
+	describe('Post Commenting', function()
+	{
+		it('should begin with no comments', function(done)
+		{
+			post2.save(function(err)
+			{
+				post2.comments.should.have.length(0);
+				done();
+			});
+		});
+
+		it('should be able to add a comment', function(done)
+		{
+			post2.comments.push('Test comment.');
+			post2.save(function(err)
+			{
+				post2.comments.should.have.length(1);
 				done();
 			});
 		});
