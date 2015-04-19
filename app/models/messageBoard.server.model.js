@@ -8,11 +8,13 @@ var MessageBoardSchema = new Schema({
 	{
 		type: String,
 		default: '',
+		required: 'Post must have a title.'
 	},
 	content:
 	{
 		type: String,
-		default: ''
+		default: '',
+		required: 'Post must have content.'
 	},
 	link:
 	{

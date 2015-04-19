@@ -53,6 +53,16 @@ describe('messageBoard Model unit tests:', function()
 				done();
 			});
 		});
+
+		it('should not allow a post with no content', function(done)
+		{
+			post1.content = '';
+			return post1.save(function(err)
+			{
+				should.exist(err);
+				done();
+			});
+		});
 	});
 
 	describe('Post Deletion', function()
