@@ -25,7 +25,7 @@
 
 					<select ng-model="selectedRole" ng-change="saveVisibility(mUser)">
 						<option value="">Change Role:</option>
-						<option ng-repeat="role in roles" ng-value="role">{{role}}</option>
+						<option ng-repeat="role in roles" ng-value="role" id="roles">{{role}}</option>
 					</select>
 					<a id="changeBtn" ng-show="showSave[users.indexOf(mUser)]" data-ng-click="changeRole(mUser, selectedRole)" class="btn btn-primary" role="button">Save</a>
 				<divp>
