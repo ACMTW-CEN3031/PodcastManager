@@ -52,7 +52,7 @@ describe('Edit Profile capabilities', function() {
       firstName.sendKeys('testFirstName');
       lastName.sendKeys('testLastName');
       email.sendKeys('cen3031@ufl.edu');
-      username.sendKeys('test');
+      username.sendKeys('testtest');
       saveProfile.click();
       expect(success.getText()).toMatch('Profile Saved Successfully');
 
