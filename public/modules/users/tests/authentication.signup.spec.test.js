@@ -152,7 +152,7 @@ describe('Sign up', function()
 
 		element(by.id('signin_submit')).click();
 
-		expect(element(by.binding('error')).getText()).toEqual('Username already exists');
+		expect(element(by.id('signupError')).getText()).toEqual('Username already exists');
 	});
 
 });
