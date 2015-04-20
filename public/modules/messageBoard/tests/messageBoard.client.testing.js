@@ -4,36 +4,17 @@ describe('messageController', function()
 {
 	beforeEach(module(ApplicationConfiguration.applicationModuleName));
 
-	var scope, $stateParams, $httpBackend;
-	beforeEach(inject(function($controller, $rootScope, _$stateParams_, _$httpBackend_)
+	var scope, $stateParams;
+	beforeEach(inject(function($rootScope, _$stateParams_)
 	{
 		scope = $rootScope.$new();
 		$stateParams = _$stateParams_;
-		$httpBackend = _$httpBackend_;
 	}));
-
-	it('Creates a post', function(messageBoardService)
-	{
-		var post = new messageBoardService({ title: 'Test', content: 'testContent', userName: 'testUser'});
-		var postResponse = new messageBoardService({ _id: '525a8422f6d0f87f0e407a33', title: 'Test', content: 'testContent', userName: 'testUser'});
-
-		$httpBackend.expectPOST('posts', post).respond(postResponse);
-	});
-
-	it('Updates a post', function(messageBoardService)
-	{
-		var post = new messageBoardService({ _id: '525a8422f6d0f87f0e407a33', title: 'Test', content: 'testContent', userName: 'testUser'});
-		scope.post = post;
-
-		$httpBackend.expectPUT('/articles/' + post._id);
-	});
 
 	it('Removes a post', function(messageBoardService)
 	{
 		var post = new messageBoardService({ _id: '525a8422f6d0f87f0e407a33', title: 'Test', content: 'testContent', userName: 'testUser'});
 		scope.posts = [post];
-
-		$httpBackend.expectDELETE('/articles/' + post._id);
 
 		scope.deletePost(post);
 		expect(scope.posts.length).toBe(0);

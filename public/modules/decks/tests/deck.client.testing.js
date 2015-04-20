@@ -11,7 +11,14 @@ describe('DeckController', function()
 		$stateParams = _$stateParams_;
 	}));
 
+	it('Removes a deck', function(Deck)
+	{
+		var deck = new Deck({ _id: '525a8422f6d0f87f0e407a33', name: 'Test', images: ['init.jpg'] });
+		scope.decks = [deck];
 
+		scope.deletePost(deck);
+		expect(scope.decks.length).toBe(0);
+	});
 
 	it('Adds an image to a deck', function(Deck)
 	{
