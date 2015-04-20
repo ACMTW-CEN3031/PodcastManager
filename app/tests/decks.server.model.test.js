@@ -34,7 +34,8 @@ describe('Deck Model unit tests:', function()
 
 		it('should be able to save a new deck', function(done)
 		{
-			deck1.save(done);
+			deck1.save();
+			done();
 		});
 
 		it('should not allow a deck to be saved with no name', function(done)
