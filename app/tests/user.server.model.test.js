@@ -51,12 +51,28 @@ describe('User Model Unit Tests:', function() {
 			user.save(done);
 		});
 
-		it('should fail to save an existing user again', function(done) {
+		it('should fail to save a user with an existing email again', function(done) {
 			user.save();
 			return user2.save(function(err) {
 				should.exist(err);
 				done();
 			});
+		});
+
+		it('should be able to save a user with an existing name but different email', function(done) {
+			user.save();
+			user2.email = 'differentEmail@test.com';
+			user2.save();
+			done();
+		});
+
+		it('should be able to save multiple users with different info', function(done) {
+			user.save();
+			user2.firstName = 'differentFirst';
+			user2.lastName = 'differentLast';
+			user2.email = 'differentEmail@test.com';
+			user2.save();
+			done();
 		});
 
 		it('should be able to show an error when try to save without first name', function(done) {
