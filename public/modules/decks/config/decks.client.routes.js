@@ -28,7 +28,7 @@ angular.module('decks').config(['$stateProvider',
 		{
 			url: '/decks/create',
 			templateUrl: 'modules/decks/views/create-deck.client.view.html',
-			data: { requiresLogin: true /* roles: ['teacher', 'admin'] */ }
+			data: { requiresLogin: true, roles: ['teacher', 'admin']  }
 		}).
 		state('viewDeck',
 		{
@@ -40,7 +40,7 @@ angular.module('decks').config(['$stateProvider',
 		{
 			url: '/decks/:deckId/edit',
 			templateUrl: 'modules/decks/views/edit-deck.client.view.html',
-			data: { requiresLogin: true /* roles: ['teacher', 'admin'] */ }
+			data: { requiresLogin: true, roles: ['teacher', 'admin'] }
 		});
 	}
 ]).run(['$rootScope', '$location', 'Authentication',
