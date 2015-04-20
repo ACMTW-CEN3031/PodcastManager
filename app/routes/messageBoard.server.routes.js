@@ -6,12 +6,12 @@ var users = require('../../app/controllers/users.server.controller'),
 module.exports = function(app)
 {
 	app.route('/messageBoard')
-		.get(messageBoard.list)
-		.post(messageBoard.post);
+		.get(users.requiresLogin, messageBoard.list)
+		.post(users.requiresLogin, messageBoard.post);
 	app.route('/messageBoard/:postId')
-		.get(messageBoard.show)
-		.put(messageBoard.update)
-		.delete(messageBoard.delete);
+		.get(users.requiresLogin, messageBoard.show)
+		.put(users.requiresLogin, messageBoard.update)
+		.delete(users.requiresLogin, messageBoard.delete);
 
 	app.param('postId', messageBoard.postById);
 };
