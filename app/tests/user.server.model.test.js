@@ -66,6 +66,31 @@ describe('User Model Unit Tests:', function() {
 				done();
 			});
 		});
+
+		it('should be able to show an error when try to save without last name', function(done) {
+			user.lastName = '';
+			return user.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without valid email', function(done) {
+			user.email = 'notanemail';
+			return user.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
+		it('should be able to show an error when try to save without a password', function(done) {
+			user.password = '';
+			return user.save(function(err) {
+				should.exist(err);
+				done();
+			});
+		});
+
 	});
 
 	after(function(done) {
