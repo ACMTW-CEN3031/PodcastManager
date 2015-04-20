@@ -39,11 +39,13 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('manage', {
 			url: '/manage',
-			templateUrl: 'modules/users/views/manage.users.client.view.html'
+			templateUrl: 'modules/users/views/manage.users.client.view.html',
+			data: { requiresLogin: true }
 		}).
 		state('viewUser', {
 			url: '/users/:userId',
-			templateUrl: 'modules/users/views/view.user.client.view.html'
+			templateUrl: 'modules/users/views/view.user.client.view.html',
+			data: { requiresLogin: true }
 		}).
 		state('reset', {
 			url: '/password/reset/:token',

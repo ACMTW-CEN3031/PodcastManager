@@ -21,14 +21,14 @@
 				<div data-ng-bind="mUser.roles[0]"></div>
 				<br/>
 				<div>
-					<a id="delete" data-ng-click="remove(mUser)" class="btn btn-danger" role="button">Delete</a>
+					<a id="delete" ng-show="user.roles[0] == 'admin'" data-ng-click="remove(mUser)" class="btn btn-danger" role="button">Delete</a>
 
-					<select ng-model="selectedRole" ng-change="saveVisibility(mUser)">
+					<select ng-show="user.roles[0] == 'admin'" ng-model="selectedRole" ng-change="saveVisibility(mUser)">
 						<option value="">Change Role:</option>
 						<option ng-repeat="role in roles" ng-value="role" id="roles">{{role}}</option>
 					</select>
 					<a id="changeBtn" ng-show="showSave[users.indexOf(mUser)]" data-ng-click="changeRole(mUser, selectedRole)" class="btn btn-primary" role="button">Save</a>
-				<divp>
+				<div>
 		</div>
 	</div>
 

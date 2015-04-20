@@ -18,7 +18,7 @@ module.exports = function(app) {
 	app.route('/users/:userId')
 		.get(users.requiresLogin, users.show)
 		.put(users.requiresLogin, users.update)
-		.delete(users.requiresLogin, /* users.hasAuthorization(['teacher', 'admin']), */ users.delete);
+		.delete(users.requiresLogin, users.hasAuthorization(['teacher', 'admin']), users.delete);
 
 
 	app.route('/users/accounts').delete(users.removeOAuthProvider);
