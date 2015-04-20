@@ -29,7 +29,13 @@ describe('DeckController', function()
 		expect(scope.deck.images.length).toEqual(imagesCount-1);
 	});
 
+	it('Finds multiple decks in a query', function(Deck)
+	{
+		var deck = new Deck({ _id: '525a8422f6d0f87f0e407a33', name: 'Test', images: ['init.jpg'] });
 
+		scope.find();
+		expect(scope.decks).toEqual([deck]);
+	});
 
 	it('Finds a single deck based on ID', function(Deck)
 	{
